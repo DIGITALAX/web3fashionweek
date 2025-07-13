@@ -142,9 +142,9 @@ export default function Home() {
         </div>
       </div>
       <div className="relative w-full h-fit flex flex-col mid:flex-row justify-between items-center gap-2 font-grav text-7xl bg-blanco">
-        <div className="relative flex w-full mid:w-fit h-fit text-espacio px-2 py-1">
+        <h1 className="relative flex w-full mid:w-fit h-fit text-espacio px-2 py-1">
           W3FW. GDR PUNK.
-        </div>
+        </h1>
         <div className="relative flex w-full mid:w-fit h-fit px-2 py-1 bg-espacio text-blanco border border-blanco">
           SEPT 2025.
         </div>
