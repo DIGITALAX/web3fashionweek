@@ -39,3 +39,19 @@ html {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .drag-container {
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+  }
+}

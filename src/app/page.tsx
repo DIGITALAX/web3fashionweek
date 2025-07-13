@@ -38,18 +38,25 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const getEventX = (e: React.MouseEvent | React.TouchEvent): number => {
+    if ('touches' in e) {
+      return e.touches[0]?.pageX || 0;
+    }
+    return e.pageX;
+  };
+
+  const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
     if (!wallRef.current) return;
     setIsDragging(true);
-    setStartX(e.pageX);
+    setStartX(getEventX(e));
     setScrollLeft(wallRef.current.scrollLeft);
     wallRef.current.style.cursor = "grabbing";
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging || !wallRef.current) return;
     e.preventDefault();
-    const x = e.pageX;
+    const x = getEventX(e);
     const walk = (x - startX) * 1.5;
     wallRef.current.scrollLeft = scrollLeft - walk;
 
@@ -66,19 +73,21 @@ export default function Home() {
     }
   };
 
-  const handleMouseUp = () => {
+  const handleEnd = () => {
     setIsDragging(false);
     if (wallRef.current) {
       wallRef.current.style.cursor = "grab";
     }
   };
 
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-    if (wallRef.current) {
-      wallRef.current.style.cursor = "grab";
-    }
-  };
+  const handleMouseDown = (e: React.MouseEvent) => handleStart(e);
+  const handleMouseMove = (e: React.MouseEvent) => handleMove(e);
+  const handleMouseUp = () => handleEnd();
+  const handleMouseLeave = () => handleEnd();
+
+  const handleTouchStart = (e: React.TouchEvent) => handleStart(e);
+  const handleTouchMove = (e: React.TouchEvent) => handleMove(e);
+  const handleTouchEnd = () => handleEnd();
 
   return (
     <div className="relative selection:bg-black selection:text-white w-full h-fit flex flex-col">
@@ -98,11 +107,14 @@ export default function Home() {
         <div
           ref={wallRef}
           className="absolute w-full h-full overflow-x-auto overflow-y-hidden hide-scrollbar z-10"
-          style={{ cursor: "grab" }}
+          style={{ cursor: "grab", touchAction: "pan-x" }}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <Image
             alt="Wall"
