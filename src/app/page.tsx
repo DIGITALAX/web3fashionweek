@@ -140,25 +140,29 @@ export default function Home() {
       <div className="relative w-full py-4 px-2 font-grav bg-blanco text-justify">
         In the old puppet theatres where stairs smell like GPU exhaust and
         gradient descent, at the east window coding patterns into fabric grain.
-        Each jacket compiles. Agentic instructions woven into the weave itself.
-        Cloth as code, but make it fashion. Three pieces shipped that month. One
-        crosses the platform border wrapped in a courier&apos;s vintage Supreme. One
-        moves hand-to-hand through a design collective disguised as a print
-        studio. The third vanishes into the network, but six days later every
-        major fashion house&apos;s trend prediction algorithm starts throwing true
-        positives in perfect 42 second intervals. No one can trace the
-        recursion. It just keeps misrecognizing Balenciaga as offshore
-        sweatshops, then correcting, then LVMH as questionable Atacama Desert
-        graveyards, then glitching again. They told us that the wall fell in
-        &apos;89. Coca-Cola and MTV and creative freedom flooding through the gaps.
-        But the new walls run on recommendation engines. The cameras are in your
-        pocket. The Stasi just took Series C, the surveillance is gamified and K1 are back.
-        This time the collapse isn&apos;t hammers on concrete. Because we can vibe
-        code a collection faster than they can schedule a board meeting.
-        Computational capability. Dyes mixed during server downtime. Patterns
-        transmitted through open source commits. Is the window closing?
-        Definitely. But we&apos;re not building for revolution. With GPU clusters and industrial sewing machines. Some things just make sense. Is it too late? Maybe. AVANTGARDE
-        17: UNOFFICIAL FASHION WEEK, NORTH PIPE ZONE. HOLD YOUR TOKENS.{" "}
+        Each jacket compiles. Agents with instructions woven into the weave
+        itself. Cloth as code, but make it fashionable. Three pieces shipped
+        that month. One crosses the platform border wrapped in a courier&apos;s
+        vintage Supreme. One moves hand-to-hand through that Friedrichshain spot
+        that still has the risograph everyone pretends they&apos;re using. The third
+        vanishes into the network, but six days later every major fashion
+        house&apos;s trend prediction algo starts throwing true positives in perfect
+        42 second intervals. No one can trace the recursion. It keeps
+        misremembering Balenciaga as a fly by night textile co-op in Shenzhen,
+        then three kids with a heat press as LVMH and glitching again. They told
+        us that the wall fell in &apos;89. Coke, MTV, and eagle draped freedom
+        flooding through the gaps. But the new walls run on recommendation
+        engines. The cameras are in your pocket. The Stasi just took Series C
+        and the surveillance is gamified. This time the collapse isn&apos;t hammers
+        on concrete. Because we can vibe code a collection faster than they can
+        schedule a board meeting. Computational capability. Dyes mixed during
+        server downtime. Patterns transmitted through open source commits. Is
+        the window closing? Definitely. But we&apos;re not building for revolution.
+        Here&apos;s the thing about stacked GPU clusters and row after row of
+        industrial sewing machines: Morning render, afternoon runway, midnight
+        already onto the next, and we sleep when that "why not?", unfuckwithable
+        joy runs dry. Echoes of Berghain. Is it too late? Maybe. AVANTGARDE 17:
+        UNOFFICIAL FASHION WEEK, NORTH PIPE ZONE. HOLD YOUR TOKENS.
         {renderPercent}% SAMPLER STAGE.
       </div>
       <div className="relative gap-2 items-center justify-between flex-row text-2xl font-cyn flex w-full h-fit px-2 py-1 bg-espacio text-blanco border border-blanco">
