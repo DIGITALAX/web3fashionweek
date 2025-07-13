@@ -162,7 +162,7 @@ export default function Home() {
         industrial sewing machines: Morning render, afternoon runway, midnight
         already onto the next, and we sleep when that &ldquo;why not?&ldquo;, unfuckwithable
         joy runs dry. Echoes of Berghain. Is it too late? Maybe. AVANTGARDE 17:
-        UNOFFICIAL FASHION WEEK, NORTH PIPE ZONE. HOLD YOUR TOKENS.
+        UNOFFICIAL FASHION WEEK, NORTH PIPE ZONE. HOLD YOUR TOKENS.{" "}
         {renderPercent}% SAMPLER STAGE.
       </div>
       <div className="relative gap-2 items-center justify-between flex-row text-2xl font-cyn flex w-full h-fit px-2 py-1 bg-espacio text-blanco border border-blanco">
