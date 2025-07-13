@@ -160,7 +160,7 @@ export default function Home() {
         the window closing? Definitely. But we&apos;re not building for revolution.
         Here&apos;s the thing about stacked GPU clusters and row after row of
         industrial sewing machines: Morning render, afternoon runway, midnight
-        already onto the next, and we sleep when that "why not?", unfuckwithable
+        already onto the next, and we sleep when that &ldquo;why not?&ldquo;, unfuckwithable
         joy runs dry. Echoes of Berghain. Is it too late? Maybe. AVANTGARDE 17:
         UNOFFICIAL FASHION WEEK, NORTH PIPE ZONE. HOLD YOUR TOKENS.
         {renderPercent}% SAMPLER STAGE.
