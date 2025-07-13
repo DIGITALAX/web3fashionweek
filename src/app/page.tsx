@@ -152,7 +152,7 @@ export default function Home() {
         graveyards, then glitching again. They told us that the wall fell in
         &apos;89. Coca-Cola and MTV and creative freedom flooding through the gaps.
         But the new walls run on recommendation engines. The cameras are in your
-        pocket. The Stasi just took Series C and the surveillance is gamified.
+        pocket. The Stasi just took Series C, the surveillance is gamified and K1 are back.
         This time the collapse isn&apos;t hammers on concrete. Because we can vibe
         code a collection faster than they can schedule a board meeting.
         Computational capability. Dyes mixed during server downtime. Patterns
