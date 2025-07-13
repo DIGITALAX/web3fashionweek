@@ -1,103 +1,181 @@
+"use client";
 import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [startX, setStartX] = useState<number>(0);
+  const [scrollLeft, setScrollLeft] = useState<number>(0);
+  const [renderPercent, setRenderPercent] = useState<number>(0);
+  const wallRef = useRef<HTMLDivElement>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const calculatePercentage = () => {
+      const now = new Date();
+      now.setFullYear(2025);
+      const targetDate = new Date(2025, 8, 15);
+      const startDate = new Date(2025, 6, 10);
+
+      const totalDays = Math.ceil(
+        (targetDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+      );
+      const daysPassed = Math.ceil(
+        (now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+      );
+
+      let percentage = Math.min(
+        100,
+        Math.max(0, (daysPassed / totalDays) * 100)
+      );
+      if (now >= targetDate) percentage = 100;
+
+      setRenderPercent(Math.floor(percentage));
+    };
+
+    calculatePercentage();
+    const interval = setInterval(calculatePercentage, 24 * 60 * 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!wallRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX);
+    setScrollLeft(wallRef.current.scrollLeft);
+    wallRef.current.style.cursor = "grabbing";
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !wallRef.current) return;
+    e.preventDefault();
+    const x = e.pageX;
+    const walk = (x - startX) * 1.5;
+    wallRef.current.scrollLeft = scrollLeft - walk;
+
+    const backgroundVideo = document.getElementById(
+      "background-video"
+    ) as HTMLVideoElement;
+    if (backgroundVideo) {
+      const currentScrollLeft = wallRef.current.scrollLeft;
+      const maxScroll =
+        wallRef.current.scrollWidth - wallRef.current.clientWidth;
+      const scrollPercent = currentScrollLeft / maxScroll;
+      const translateX = -scrollPercent * 20;
+      backgroundVideo.style.transform = `translateX(${translateX}vw) scale(1.3)`;
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (wallRef.current) {
+      wallRef.current.style.cursor = "grab";
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    if (wallRef.current) {
+      wallRef.current.style.cursor = "grab";
+    }
+  };
+
+  return (
+    <div className="relative selection:bg-black selection:text-white w-full h-fit flex flex-col">
+      <div className="relative w-full flex-col h-screen flex items-center justify-center overflow-hidden">
+        <video
+          id="background-video"
+          muted
+          loop
+          autoPlay
+          draggable={false}
+          className="object-cover absolute flex w-full h-full top-0 left-0 z-0"
+          style={{ transform: "scale(1.3)", transformOrigin: "center center" }}
+          poster="/images/gpufactory.png"
+        >
+          <source src="/videos/gpufactory.mp4" />
+        </video>
+        <div
+          ref={wallRef}
+          className="absolute w-full h-full overflow-x-auto overflow-y-hidden hide-scrollbar z-10"
+          style={{ cursor: "grab" }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+        >
+          <Image
+            alt="Wall"
+            draggable={false}
+            width={3000}
+            height={1000}
+            src={"/images/wall.png"}
+            className="h-full object-cover"
+            style={{ minWidth: "max(200vw, 3187px)" }}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className="relative w-full sm:w-fit h-fit flex items-center justify-center z-20">
+          <div className="relative w-full sm:w-96 h-96 flex">
+            <video
+              muted
+              loop
+              autoPlay
+              draggable={false}
+              poster="/images/W3FW_poster.png"
+              className="object-contain items-center justify-center flex w-full h-full relative z-0"
+            >
+              <source src="/videos/W3FW_poster.mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+      <div className="relative w-full h-fit flex flex-col mid:flex-row justify-between items-center gap-2 font-grav text-7xl bg-blanco">
+        <div className="relative flex w-full mid:w-fit h-fit text-espacio px-2 py-1">
+          W3FW. GDR PUNK.
+        </div>
+        <div className="relative flex w-full mid:w-fit h-fit px-2 py-1 bg-espacio text-blanco border border-blanco">
+          SEPT 2025.
+        </div>
+      </div>
+      <div className="relative w-full py-4 px-2 font-grav bg-blanco text-justify">
+        In the old puppet theatres where stairs smell like GPU exhaust and
+        gradient descent, at the east window coding patterns into fabric grain.
+        Each jacket compiles. Agentic instructions woven into the weave itself.
+        Cloth as code, but make it fashion. Three pieces shipped that month. One
+        crosses the platform border wrapped in a courier&apos;s vintage Supreme. One
+        moves hand-to-hand through a design collective disguised as a print
+        studio. The third vanishes into the network, but six days later every
+        major fashion house&apos;s trend prediction algorithm starts throwing true
+        positives in perfect 42 second intervals. No one can trace the
+        recursion. It just keeps misrecognizing Balenciaga as offshore
+        sweatshops, then correcting, then LVMH as questionable Atacama Desert
+        graveyards, then glitching again. They told us that the wall fell in
+        &apos;89. Coca-Cola and MTV and creative freedom flooding through the gaps.
+        But the new walls run on recommendation engines. The cameras are in your
+        pocket. The Stasi just took Series C and the surveillance is gamified.
+        This time the collapse isn&apos;t hammers on concrete. Because we can vibe
+        code a collection faster than they can schedule a board meeting.
+        Computational capability. Dyes mixed during server downtime. Patterns
+        transmitted through open source commits. Is the window closing?
+        Definitely. But we&apos;re not building for revolution. With GPU clusters and industrial sewing machines. Some things just make sense. Is it too late? Maybe. AVANTGARDE
+        17: UNOFFICIAL FASHION WEEK, NORTH PIPE ZONE. HOLD YOUR TOKENS.{" "}
+        {renderPercent}% SAMPLER STAGE.
+      </div>
+      <div className="relative gap-2 items-center justify-between flex-row text-2xl font-cyn flex w-full h-fit px-2 py-1 bg-espacio text-blanco border border-blanco">
+        <div
+          className="underline cursor-pointer"
+          onClick={() => window.open("https://digitalax.xyz/")}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          DIGITALAX
+        </div>
+
+        <div
+          className="underline cursor-pointer"
+          onClick={() => window.open("https://globaldesignernetwork.com/")}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          GDN
+        </div>
+      </div>
     </div>
   );
 }

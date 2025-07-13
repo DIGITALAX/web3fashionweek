@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+
+Sitemap: https://web3fashionweek.com/sitemap.xml

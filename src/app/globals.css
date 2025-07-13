@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "Gravity";
+  src: url("/fonts/Gravity.otf");
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: "Cyn";
+  src: url("/fonts/Cynocel.ttf");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --font-grav: "Gravity";
+  --font-cyn: "Cyn";
+
+  --breakpoint-mid: 960px;
+
+  --color-espacio: #30322f;
+  --color-blanco: #eee4d0;
+}
+
+@layer utilites {
+  .font-grav {
+    font-family: var(--font-grav);
+  }
+
+  .font-cyn {
+    font-family: var(--font-cyn);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html {
+  background-color: black;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
