@@ -4,19 +4,19 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Web3 Fashion Week - DIGITALAX x GDN",
   description:
-    "What if the wall never fell in '89? What cracks it now? Throughput. Agentic Systems. Fabric that compiles. Copy that routes around control. Web3 Fashion Week, September 2025.",
+    "What if the wall never fell in '89? What cracks it now? Throughput. Agentic Systems. Fabric that compiles. Copy that routes around control. Web3 Fashion Week, October 2025.",
   metadataBase: new URL("https://web3fashionweek.com/"),
   twitter: {
     card: "summary_large_image",
     creator: "@digitalax",
     title: "Web3 Fashion Week - DIGITALAX x GDN",
     description:
-      "What if the wall never fell in '89? What cracks it now? Throughput. Agentic Systems. Fabric that compiles. Copy that routes around control. Web3 Fashion Week, September 2025.",
+      "What if the wall never fell in '89? What cracks it now? Throughput. Agentic Systems. Fabric that compiles. Copy that routes around control. Web3 Fashion Week, October 2025.",
   },
   openGraph: {
     title: "Web3 Fashion Week - DIGITALAX x GDN",
     description:
-      "What if the wall never fell in '89? What cracks it now? Throughput. Agentic Systems. Fabric that compiles. Copy that routes around control. Web3 Fashion Week, September 2025.",
+      "What if the wall never fell in '89? What cracks it now? Throughput. Agentic Systems. Fabric that compiles. Copy that routes around control. Web3 Fashion Week, October 2025.",
   },
   robots: {
     googleBot: {
