@@ -13,7 +13,7 @@ export default function Home() {
     const calculatePercentage = () => {
       const now = new Date();
       now.setFullYear(2025);
-      const targetDate = new Date(2025, 8, 30);
+      const targetDate = new Date(2025, 9, 30);
       const startDate = new Date(2025, 6, 10);
 
       const totalDays = Math.ceil(
