@@ -146,7 +146,7 @@ export default function Home() {
           W3FW. GDR PUNK.
         </h1>
         <div className="relative flex w-full mid:w-fit h-fit px-2 py-1 bg-espacio text-blanco border border-blanco">
-          OCT 2025.
+          NOV 2025.
         </div>
       </div>
       <div className="relative w-full py-4 px-2 font-grav bg-blanco text-justify">
