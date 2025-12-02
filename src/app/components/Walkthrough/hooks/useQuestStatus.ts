@@ -16,7 +16,7 @@ export const useQuestStatus = (lang: Language) => {
     address: QUEST_CONTRACT,
     abi: W3FWQuestABI,
     functionName: "hasCompletedStep",
-    args: [BigInt(2), address, langId],
+    args: [BigInt(1), address, langId],
     query: {
       enabled: !!address && isConnected,
     },
