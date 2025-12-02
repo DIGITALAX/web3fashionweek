@@ -10,9 +10,21 @@
   src: url("/fonts/Cynocel.ttf");
 }
 
+@font-face {
+  font-family: "HandJet";
+  src: url("/fonts/handjet.ttf");
+}
+
+@font-face {
+  font-family: "Almas";
+  src: url("/fonts/almas.ttf");
+}
+
 @theme {
   --font-grav: "Gravity";
   --font-cyn: "Cyn";
+  --font-almas: "Almas";
+  --font-hand: "HandJet";
 
   --breakpoint-mid: 960px;
 
@@ -27,6 +39,14 @@
 
   .font-cyn {
     font-family: var(--font-cyn);
+  }
+
+  .font-almas {
+    font-family: var(--font-almas);
+  }
+
+  .font-hand {
+    font-family: var(--font-hand);
   }
 }
 
@@ -47,6 +67,14 @@ html {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }
 
 @media (max-width: 768px) {
