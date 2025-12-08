@@ -70,6 +70,14 @@ export interface NodeProps {
   onVideoComplete?: () => void;
 }
 
+export interface VideoStageProps {
+  dict: any;
+  lang: string;
+  videos: Record<Language, string>;
+  storageKey: string;
+  onVideoComplete?: () => void;
+}
+
 export interface GoodsProps {
   dict: any;
   lang: string;

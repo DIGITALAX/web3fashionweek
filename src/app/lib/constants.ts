@@ -1,4 +1,7 @@
-import { Language, WalkthroughItem } from "../components/Walkthrough/types/walkthrough.types";
+import {
+  Language,
+  WalkthroughItem,
+} from "../components/Walkthrough/types/walkthrough.types";
 
 export const INFURA_GATEWAY: string = "https://thedial.infura-ipfs.io";
 
@@ -23,7 +26,15 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "runwayd",
     component: "RunwayD",
     title: "RUNWAY D",
-    image: "QmeezPKNaHXFyPc4R6K2aeamFCFTUqAsBz8Rx5yUTDAFzD",
+    image: "QmZP8fnEbViiHMSweeXUungJnndi2qmXE45j6pJjfsfXuY",
+    locked: true,
+    hasTask: true,
+  },
+  {
+    id: "shopthelooks",
+    component: "ShopTheLooks",
+    title: "SHOP THE LOOKS",
+    image: "QmfRbrJcF3zRLMRfqoURgr9ypiEGdk1eK1LoiLAwxi1keG",
     locked: true,
     hasTask: false,
     comingSoon: true,
@@ -38,10 +49,10 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     comingSoon: true,
   },
   {
-    id: "tbd1",
-    component: "TBD",
-    title: "???",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
+    id: "runwayx",
+    component: "RunwayX",
+    title: "RUNWAY X",
+    image: "",
     locked: false,
     hasTask: false,
     comingSoon: true,
@@ -200,8 +211,10 @@ export const LANG_IDS = {
   FA: 5,
 };
 
-export const WHITE_RABBIT_VIDEO = "QmaoQz3w4QbQexAhyvZsmScXLBjyiE8Fep5NSfgtwzPWE3";
-export const WHITE_RABBIT_IMAGE = "QmQDF161Gv1Umo7PaPXahioPMfk3cCc9cdXU1W2Xvh4t5X";
+export const WHITE_RABBIT_VIDEO =
+  "QmaoQz3w4QbQexAhyvZsmScXLBjyiE8Fep5NSfgtwzPWE3";
+export const WHITE_RABBIT_IMAGE =
+  "QmQDF161Gv1Umo7PaPXahioPMfk3cCc9cdXU1W2Xvh4t5X";
 
 export const getLangId = (lang: Language): number => {
   const langMap: Record<Language, number> = {
@@ -212,4 +225,19 @@ export const getLangId = (lang: Language): number => {
     fa: LANG_IDS.FA,
   };
   return langMap[lang] || LANG_IDS.EN;
+};
+
+export const NODE_VIDEOS: Record<Language, string> = {
+  en: "QmYbvigi3RvoRoSugkrThg7VPmfG7kYcrUbgs3cRY9tAn2",
+  es: "QmfMsqoi2QqMSBNwmi5z7daE8ToeBoex4br2bSKnWrvDgn",
+  pt: "QmecaKz1Ew3JLAmm7w8nnWKLJZNujU69EkVYEBsTu51JYF",
+  ar: "QmTcSGcgaUeutRNwCPohcdwajiYgFc7Ag9kdyq1XHfLThr",
+  fa: "QmXT68aa6csxvkQnpo4vqG23qKk3TrS6cous77CG8aTcAT",
+};
+export const RUNWAYD_VIDEOS: Record<Language, string> = {
+  en: "QmcnadrTci4p6jYP9sGZNsJzajTfokQVeTPWoiTWtzih15",
+  es: "QmRpD5HVx8hsxvCA5ZCDcDDG3naiY63XXJfzo8iRSopg2p",
+  pt: "Qma4eKHfhKBNd3Hz1AaoBdi2SN2ounZZ6bzVREtbmBZdSt",
+  ar: "QmVN6cT3wJBLH11Bctypc8jdbwUXUwcd9nQNbX4u3LgbeK",
+  fa: "QmT66NWwX8YQrJfCh1UJgSp1Deiu8KLMvgcwGkrzjxapVU",
 };

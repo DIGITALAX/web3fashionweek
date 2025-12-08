@@ -7,6 +7,7 @@ import QuestSidebar from "./QuestSidebar";
 import Node from "./Node";
 import Goods from "./Goods";
 import WhiteRabbit from "./WhiteRabbit";
+import RunwayD from "./RunwayD";
 import useQuestStatus from "../hooks/useQuestStatus";
 import { WALKTHROUGH_ITEMS } from "@/app/lib/constants";
 import { Language } from "../types/walkthrough.types";
@@ -49,6 +50,14 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
         );
       case "Goods":
         return <Goods dict={dict} lang={lang} />;
+      case "RunwayD":
+        return (
+          <RunwayD
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("runwayd")}
+          />
+        );
       default:
         return (
           <Node

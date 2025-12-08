@@ -34,6 +34,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("whiterabbit");
     }
 
+    if (isVideoWatched(`runwayd_${lang}`)) {
+      tasks.push("runwayd");
+    }
+
     setCompletedTasks(tasks);
   }, [lang, hasCompletedWhiteRabbit]);
 
