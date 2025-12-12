@@ -23,6 +23,17 @@ export const useQuestStatus = (lang: Language) => {
     account: address,
   });
 
+  const { data: hasCompletedShopTheLooks, refetch: refetchShopTheLooks } = useReadContract({
+    address: QUEST_CONTRACT,
+    abi: W3FWQuestABI,
+    functionName: "hasCompletedStep",
+    args: [BigInt(2), address, langId],
+    query: {
+      enabled: !!address && isConnected,
+    },
+    account: address,
+  });
+
   useEffect(() => {
     const tasks: string[] = [];
 
@@ -38,8 +49,12 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("runwayd");
     }
 
+    if (hasCompletedShopTheLooks) {
+      tasks.push("shopthelooks");
+    }
+
     setCompletedTasks(tasks);
-  }, [lang, hasCompletedWhiteRabbit]);
+  }, [lang, hasCompletedWhiteRabbit, hasCompletedShopTheLooks]);
 
   const markTaskComplete = (taskId: string) => {
     if (!completedTasks.includes(taskId)) {
@@ -49,6 +64,7 @@ export const useQuestStatus = (lang: Language) => {
 
   const refetchAll = () => {
     refetchWhiteRabbit();
+    refetchShopTheLooks();
   };
 
   return {
@@ -56,6 +72,7 @@ export const useQuestStatus = (lang: Language) => {
     markTaskComplete,
     refetchAll,
     hasCompletedWhiteRabbit: hasCompletedWhiteRabbit as boolean,
+    hasCompletedShopTheLooks: hasCompletedShopTheLooks as boolean,
   };
 };
 

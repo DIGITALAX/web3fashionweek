@@ -34,10 +34,9 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "shopthelooks",
     component: "ShopTheLooks",
     title: "SHOP THE LOOKS",
-    image: "QmfRbrJcF3zRLMRfqoURgr9ypiEGdk1eK1LoiLAwxi1keG",
+    image: "QmSiS2TbetGejn9bdSys4SvXCuofPA4fduEmMwGFZGhEvE",
     locked: true,
-    hasTask: false,
-    comingSoon: true,
+    hasTask: true,
   },
   {
     id: "sodras",
@@ -52,7 +51,7 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "runwayx",
     component: "RunwayX",
     title: "RUNWAY X",
-    image: "",
+    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
@@ -241,3 +240,38 @@ export const RUNWAYD_VIDEOS: Record<Language, string> = {
   ar: "QmVN6cT3wJBLH11Bctypc8jdbwUXUwcd9nQNbX4u3LgbeK",
   fa: "QmT66NWwX8YQrJfCh1UJgSp1Deiu8KLMvgcwGkrzjxapVU",
 };
+
+export const MONA_TOKEN: `0x${string}` = "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
+
+export const SHOP_NFTS: { id: number; image: string; animation: string }[] = [
+  {
+    id: 1,
+    image: "QmSiS2TbetGejn9bdSys4SvXCuofPA4fduEmMwGFZGhEvE",
+    animation: "QmZrUiVGPgoYZwpcJZsYUqY3ezZSGKf8UiBguFRunJCfMk",
+  },
+  {
+    id: 2,
+    image: "QmTMewVHTDhWS1dGj3qXrvvC9rkAKtAjrtBZZYsSnNdjQR",
+    animation: "QmdDEvN4hYMfWQNgncRkyoTXsReqmaVvK6mqH1BVu14iYG",
+  },
+  {
+    id: 3,
+    image: "QmTSdR9rroWRyyYUE1kDWFP8d7xNSdcByc8yJUHg3v38pF",
+    animation: "QmVbhhjUYMc7EqDJVBqcU45Dp2apex5dQyNkyL5QzshdpU",
+  },
+  {
+    id: 4,
+    image: "QmfEn4QCGzfPFRMyZD4FxPb4zqFWCwC99qvBpUB8XfiR8a",
+    animation: "QmcovwibfJMPRswykLvsozBUhWW7uktGH789isqJSjbe61",
+  },
+  {
+    id: 5,
+    image: "QmTqPdtDsQUdmoqqGq3Y7E4f5cjWYSqVWy8ogMxbfSko2g",
+    animation: "QmZ4pawatBFE6Lom1PWbb3CxDamDb9yF1BTGPJvVZ5Jh8G",
+  },
+  {
+    id: 6,
+    image: "QmZfStnvHaSSMrM1XbUmikh4me4YUPDD6VTwig1gvAdSHG",
+    animation: "QmaEkLZ3pkksE48qam45jX5YFa9bNTKR5HjpQEgRebkQMS",
+  },
+];

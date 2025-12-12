@@ -90,6 +90,19 @@ export interface WhiteRabbitProps {
   hasCompleted?: boolean;
 }
 
+export interface ShopTheLooksProps {
+  dict: any;
+  lang: string;
+  onComplete?: () => void;
+  hasCompleted?: boolean;
+}
+
+export interface ShopNFT {
+  id: number;
+  image: string;
+  animation: string;
+}
+
 export interface Profile {
   questStage: number;
   
