@@ -43,9 +43,8 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     component: "Sodras",
     title: "CAFE SODRAS",
     image: "Qma7unEpmNCeTiTDiYAQDd9VJ5bLizefd8xfwMYVMaL86X",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    locked: true,
+    hasTask: true,
   },
   {
     id: "eatcake",
@@ -249,6 +248,15 @@ export const RUNWAYD_VIDEOS: Record<Language, string> = {
   ar: "QmVN6cT3wJBLH11Bctypc8jdbwUXUwcd9nQNbX4u3LgbeK",
   fa: "QmT66NWwX8YQrJfCh1UJgSp1Deiu8KLMvgcwGkrzjxapVU",
 };
+export const CAFES_VIDEOS: Record<Language, string> = {
+  en: "QmSDbkdsXuqtG1Yku8bYr6xkfFr4mhNSahkyQ9cY1HeqBN",
+  es: "QmfEkXVoCiwhJ5UPKVszmXzPS8SF1v9hsyjnbjqEyL6cEb",
+  pt: "QmeF49DNxK2e54E5rNvaNWHnLvQUVuJQyfMjppS92x5aPh",
+  ar: "QmUoMLKjTtoCzbTvJw289ke9sJk3SynmPi3mH1H8rtNbbA",
+  fa: "QmVLPvQWbEWurTnWXSnJBoiLJFijZjj3hAXwJRNYWbrDPZ",
+};
+
+
 
 export const MONA_TOKEN: `0x${string}` = "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
 

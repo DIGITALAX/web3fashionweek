@@ -9,6 +9,7 @@ import Goods from "./Goods";
 import WhiteRabbit from "./WhiteRabbit";
 import RunwayD from "./RunwayD";
 import ShopTheLooks from "./ShopTheLooks";
+import Sodras from "./Sodras";
 import useQuestStatus from "../hooks/useQuestStatus";
 import { WALKTHROUGH_ITEMS } from "@/app/lib/constants";
 import { Language } from "../types/walkthrough.types";
@@ -66,6 +67,14 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             lang={lang}
             onComplete={() => handleTaskComplete("shopthelooks")}
             hasCompleted={hasCompletedShopTheLooks}
+          />
+        );
+      case "Sodras":
+        return (
+          <Sodras
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("sodras")}
           />
         );
       default:
