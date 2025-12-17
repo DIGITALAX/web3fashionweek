@@ -10,13 +10,14 @@ import WhiteRabbit from "./WhiteRabbit";
 import RunwayD from "./RunwayD";
 import ShopTheLooks from "./ShopTheLooks";
 import Sodras from "./Sodras";
+import EatCake from "./EatCake";
 import useQuestStatus from "../hooks/useQuestStatus";
 import { WALKTHROUGH_ITEMS } from "@/app/lib/constants";
 import { Language } from "../types/walkthrough.types";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const { completedTasks, markTaskComplete, refetchAll, hasCompletedWhiteRabbit, hasCompletedShopTheLooks } = useQuestStatus(lang as Language);
+  const { completedTasks, markTaskComplete, refetchAll, hasCompletedWhiteRabbit, hasCompletedShopTheLooks, hasCompletedEatCake } = useQuestStatus(lang as Language);
 
   const handleNavigate = (index: number) => {
     setCurrentIndex(index);
@@ -75,6 +76,15 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             dict={dict}
             lang={lang}
             onVideoComplete={() => handleTaskComplete("sodras")}
+          />
+        );
+      case "EatCake":
+        return (
+          <EatCake
+            dict={dict}
+            lang={lang}
+            onComplete={() => handleTaskComplete("eatcake")}
+            hasCompleted={hasCompletedEatCake}
           />
         );
       default:

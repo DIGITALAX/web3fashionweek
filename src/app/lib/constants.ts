@@ -51,9 +51,8 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     component: "EatCake",
     title: "EAT CAKE",
     image: "QmNWYbr7R2qtBkjkVc59cQ1N9nVGEGbxvjmsBUbKXwHA2k",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    locked: true,
+    hasTask: true,
   },
   {
     id: "runwayx",
@@ -164,24 +163,6 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     comingSoon: true,
   },
   {
-    id: "tbd13",
-    component: "TBD",
-    title: "???",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
-  },
-  {
-    id: "tbd14",
-    component: "TBD",
-    title: "???",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
-  },
-  {
     id: "goods",
     component: "Goods",
     title: "GOODS",
@@ -259,6 +240,29 @@ export const CAFES_VIDEOS: Record<Language, string> = {
 
 
 export const MONA_TOKEN: `0x${string}` = "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
+
+export const CAKE_NFTS: { id: number; image: string; animation: string }[] = [
+  {
+    id: 1,
+    image: "QmYCP8G1C6LVuabZWHBoFTc8NdD8sMsmRrj5qSQhKiYBvd",
+    animation: "QmU27MunbbK6mQPmHVi9AzL4LYr4xiQBc7yRUyACr9prwE",
+  },
+  {
+    id: 2,
+    image: "QmNyfpVWrz13GLF4ftvHVyr6cjMquftat6jzijGvAZFr1N",
+    animation: "QmR5ysTWXnrdTnuyF83CLzgmkQKSy6rEz2MeVnvw4Vt41a",
+  },
+  {
+    id: 3,
+    image: "Qmd1oCna4qV5SxtLo8Qq8yYmqVtSXyo1ecBDf5vSXeYGXn",
+    animation: "QmcL9NN8airYmqn1zu4mNjmxGhxW53USyCVJu6KthoG2Eh",
+  },
+  {
+    id: 4,
+    image: "QmewgaHURBFtAVo3WxZBuitgsKvCPzzPyB8jBNr8i4hgvE",
+    animation: "QmUvwqtZQcfuL3xvdAVa8bzw13QAKC7brk6uMLD9ULEzjc",
+  },
+];
 
 export const SHOP_NFTS: { id: number; image: string; animation: string }[] = [
   {
