@@ -250,7 +250,7 @@ export const RUNWAYD_VIDEOS: Record<Language, string> = {
 };
 export const CAFES_VIDEOS: Record<Language, string> = {
   en: "QmSDbkdsXuqtG1Yku8bYr6xkfFr4mhNSahkyQ9cY1HeqBN",
-  es: "QmfEkXVoCiwhJ5UPKVszmXzPS8SF1v9hsyjnbjqEyL6cEb",
+  es: "QmSdyjNiKHWoNHTHhtNoTDqssuDQhNwcYEqSvWJepo3Fmn",
   pt: "QmeF49DNxK2e54E5rNvaNWHnLvQUVuJQyfMjppS92x5aPh",
   ar: "QmUoMLKjTtoCzbTvJw289ke9sJk3SynmPi3mH1H8rtNbbA",
   fa: "QmVLPvQWbEWurTnWXSnJBoiLJFijZjj3hAXwJRNYWbrDPZ",
