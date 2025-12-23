@@ -58,16 +58,15 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "runwayx",
     component: "RunwayX",
     title: "RUNWAY X",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    image: "QmPAQxjEBHJLH5bMGZ8HDx82B9MhTipvTfEBXstpapXwyn",
+    locked: true,
+    hasTask: true,
   },
   {
-    id: "tbd2",
-    component: "TBD",
-    title: "???",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
+    id: "darkglass",
+    component: "DarkGlass",
+    title: "DARK GLASS",
+    image: "QmeZUi7SD9GhRjYridcpCaMZMXQ8DQqrV1FUjXb34PQWiV",
     locked: false,
     hasTask: false,
     comingSoon: true,
@@ -236,10 +235,16 @@ export const CAFES_VIDEOS: Record<Language, string> = {
   ar: "QmUoMLKjTtoCzbTvJw289ke9sJk3SynmPi3mH1H8rtNbbA",
   fa: "QmVLPvQWbEWurTnWXSnJBoiLJFijZjj3hAXwJRNYWbrDPZ",
 };
+export const RUNWAYX_VIDEOS: Record<Language, string> = {
+  en: "QmYrhheK8BAJTfbqBB1qEbuQVM6fseRciMACecD6bpEHj1",
+  es: "QmTSrJt8NkjgZhkve4PFRrjBmjdG3z7VuW27KkhTaeNMk4",
+  pt: "QmbGRoK8DJftMkeQiExcgGV26s73vt6nAanw35bVt2niyJ",
+  ar: "QmXcVhxr4zvdLp95BnAg7JEKt6oxaCPDS8w4nYeuLG7stK",
+  fa: "QmapZJAaHs3C6yhdPxPh6pyLdUBor8gkWKVExjvvUAyDNn",
+};
 
-
-
-export const MONA_TOKEN: `0x${string}` = "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
+export const MONA_TOKEN: `0x${string}` =
+  "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
 
 export const CAKE_NFTS: { id: number; image: string; animation: string }[] = [
   {

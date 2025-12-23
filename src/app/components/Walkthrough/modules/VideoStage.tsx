@@ -4,10 +4,16 @@ import { useRef, useState } from "react";
 import VideoControls from "./VideoControls";
 import useVideoProgress from "../hooks/useVideoProgress";
 import useQuestVideo from "../hooks/useQuestVideo";
-import { VideoStageProps, Language } from "@/app/components/Walkthrough/types/walkthrough.types";
+import { VideoStageProps } from "@/app/components/Walkthrough/types/walkthrough.types";
 import { getFontCyn } from "@/app/lib/constants";
 
-const VideoStage = ({ dict, lang, videos, storageKey, onVideoComplete }: VideoStageProps) => {
+const VideoStage = ({
+  dict,
+  lang,
+  videos,
+  storageKey,
+  onVideoComplete,
+}: VideoStageProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoUrl = useQuestVideo(videos);
   const [isLoading, setIsLoading] = useState<boolean>(true);
