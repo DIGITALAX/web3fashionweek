@@ -31,6 +31,11 @@
   "quest_runwayx": "put2, merusmeru, mardebytes",
   "darkglass": "VIDRO ESCURO",
   "quest_darkglass": "armações sem filmagem",
+  "darkglassDescription": "ver tudo, não gravar nada. segure 1 MONA ou 1 Genesis NFT pra mintar. put2, merusmeru, mardebytes fazem upload das coleções no",
+  "darkglassMarketLink": "mercado",
+  "darkglassMintSuccess": "ÓCULOS MINTADOS COM SUCESSO",
+  "darkglassMintError": "MINT FALHOU",
+  "darkglassGateInfo": "Segure 1 MONA ou 1 Genesis NFT pra mintar",
   "shopthelooks": "COMPRE OS LOOKS",
   "quest_shopthelooks": "vista o código",
   "shopDescription": "Minte uma amostra de RunwayD: Yawp11, Voxelia & Zenvistas. Explore as coleções completas no",
@@ -55,5 +60,7 @@
   "shopMintError": "MINT FALHOU",
   "stepCompleteSuccess": "PASSO COMPLETADO",
   "stepCompleteError": "PASSO FALHOU",
+  "workflows4090": "Workflows numa 4090",
+  "quest_workflows4090": "Uma jaqueta cinza de camuflagem ucraniana",
   "footer": "Nos velhos teatros de marionetes onde as escadas cheiram a escapamento de GPU e descida de gradiente, na janela leste codificando padrões na trama do tecido. Cada jaqueta compila. Agentes com instruções tecidas na própria trama. Tecido como código, mas deixa fashion. Três peças enviadas naquele mês. Uma cruza a fronteira da plataforma embrulhada num Supreme vintage de mensageiro. Outra passa de mão em mão por aquele lugar em Friedrichshain que ainda tem o risógrafo que todo mundo finge usar. A terceira desaparece na rede, mas seis dias depois o algoritmo de previsão de tendências de cada grande casa de moda começa a disparar verdadeiros positivos em intervalos perfeitos de 42 segundos. Ninguém consegue rastrear a recursão. Continua confundindo Balenciaga com uma cooperativa têxtil clandestina em Shenzhen, depois três moleques com uma prensa térmica como LVMH e glitchando de novo. Nos disseram que o muro caiu em '89. Coca-Cola, MTV, e liberdade envolta em águias inundando as brechas. Mas os novos muros funcionam com motores de recomendação. As câmeras estão no seu bolso. A Stasi acabou de fechar uma Série C e a vigilância está gamificada. Dessa vez o colapso não é marteladas no concreto. Porque a gente consegue vibrar uma coleção mais rápido do que eles conseguem agendar uma reunião de diretoria. Capacidade computacional. Corantes misturados durante o tempo de inatividade do servidor. Padrões transmitidos através de commits de código aberto. A janela está fechando? Com certeza. Mas a gente não tá construindo pra revolução. É o seguinte sobre clusters de GPUs empilhados e fileira após fileira de máquinas de costura industriais: Render de manhã, passarela de tarde, meia-noite já no próximo, e a gente dorme quando aquele \"por que não?\", aquela alegria inabalável seca. Ecos de Berghain. É tarde demais? Talvez. AVANTGARDE 17: SEMANA DE MODA NÃO OFICIAL, ZONA NORTH PIPE. SEGUREM SEUS TOKENS."
 }

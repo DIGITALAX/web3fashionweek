@@ -104,6 +104,13 @@ export interface EatCakeProps {
   hasCompleted?: boolean;
 }
 
+export interface DarkGlassProps {
+  dict: any;
+  lang: string;
+  onComplete?: () => void;
+  hasCompleted?: boolean;
+}
+
 export interface ShopNFT {
   id: number;
   image: string;

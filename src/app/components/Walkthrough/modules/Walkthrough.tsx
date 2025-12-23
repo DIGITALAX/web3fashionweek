@@ -15,6 +15,7 @@ import useQuestStatus from "../hooks/useQuestStatus";
 import { WALKTHROUGH_ITEMS } from "@/app/lib/constants";
 import { Language } from "../types/walkthrough.types";
 import RunwayX from "./RunwayX";
+import DarkGlass from "./DarkGlass";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -25,6 +26,7 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
     hasCompletedWhiteRabbit,
     hasCompletedShopTheLooks,
     hasCompletedEatCake,
+    hasCompletedDarkGlass,
   } = useQuestStatus(lang as Language);
 
   const handleNavigate = (index: number) => {
@@ -101,6 +103,15 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             dict={dict}
             lang={lang}
             onVideoComplete={() => handleTaskComplete("runwayx")}
+          />
+        );
+      case "DarkGlass":
+        return (
+          <DarkGlass
+            dict={dict}
+            lang={lang}
+            onComplete={() => handleTaskComplete("darkglass")}
+            hasCompleted={hasCompletedDarkGlass}
           />
         );
       default:

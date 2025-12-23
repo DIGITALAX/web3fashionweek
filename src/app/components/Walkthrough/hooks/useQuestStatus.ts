@@ -45,6 +45,17 @@ export const useQuestStatus = (lang: Language) => {
     account: address,
   });
 
+  const { data: hasCompletedDarkGlass, refetch: refetchDarkGlass } = useReadContract({
+    address: QUEST_CONTRACT,
+    abi: W3FWQuestABI,
+    functionName: "hasCompletedStep",
+    args: [BigInt(4), address, langId],
+    query: {
+      enabled: !!address && isConnected,
+    },
+    account: address,
+  });
+
   useEffect(() => {
     const tasks: string[] = [];
 
@@ -72,8 +83,16 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("eatcake");
     }
 
+    if (isVideoWatched(`runwayx_${lang}`)) {
+      tasks.push("runwayx");
+    }
+
+    if (hasCompletedDarkGlass) {
+      tasks.push("darkglass");
+    }
+
     setCompletedTasks(tasks);
-  }, [lang, hasCompletedWhiteRabbit, hasCompletedShopTheLooks, hasCompletedEatCake]);
+  }, [lang, hasCompletedWhiteRabbit, hasCompletedShopTheLooks, hasCompletedEatCake, hasCompletedDarkGlass]);
 
   const markTaskComplete = (taskId: string) => {
     if (!completedTasks.includes(taskId)) {
@@ -85,6 +104,7 @@ export const useQuestStatus = (lang: Language) => {
     refetchWhiteRabbit();
     refetchShopTheLooks();
     refetchEatCake();
+    refetchDarkGlass();
   };
 
   return {
@@ -94,6 +114,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedWhiteRabbit: hasCompletedWhiteRabbit as boolean,
     hasCompletedShopTheLooks: hasCompletedShopTheLooks as boolean,
     hasCompletedEatCake: hasCompletedEatCake as boolean,
+    hasCompletedDarkGlass: hasCompletedDarkGlass as boolean,
   };
 };
 

@@ -67,15 +67,14 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     component: "DarkGlass",
     title: "DARK GLASS",
     image: "QmeZUi7SD9GhRjYridcpCaMZMXQ8DQqrV1FUjXb34PQWiV",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    locked: true,
+    hasTask: true,
   },
   {
-    id: "tbd3",
-    component: "TBD",
-    title: "???",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
+    id: "workflows4090",
+    component: "Workflows4090",
+    title: "workflows4090",
+    image: "QmXU8EVTzs7jYzqFR8afihECFH9j6CXzviyY9bhxU6fkF4",
     locked: false,
     hasTask: false,
     comingSoon: true,
@@ -245,6 +244,9 @@ export const RUNWAYX_VIDEOS: Record<Language, string> = {
 
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
+export const GENESIS_NFT: `0x${string}` =
+  "0xE69dAB02100d3989bCA736a0FE1239CbFcf2cE01";
+
 
 export const CAKE_NFTS: { id: number; image: string; animation: string }[] = [
   {
@@ -266,6 +268,24 @@ export const CAKE_NFTS: { id: number; image: string; animation: string }[] = [
     id: 4,
     image: "QmewgaHURBFtAVo3WxZBuitgsKvCPzzPyB8jBNr8i4hgvE",
     animation: "QmUvwqtZQcfuL3xvdAVa8bzw13QAKC7brk6uMLD9ULEzjc",
+  },
+];
+
+export const DARKGLASS_NFTS: { id: number; image: string; animation: string }[] = [
+  {
+    id: 1,
+    image: "QmRnuPTSXy92dnGhRwDtbQMCjuiiBwppycCAb15Axh1QKK",
+    animation: "QmWrhPSH41AHqZ9TGvjwLazCPq7kt6YGXKtDHnDep6wdL1",
+  },
+  {
+    id: 2,
+    image: "QmQ1DHrikXSrLjDktULLCBSvk8AjY8s7GZ6ESYM2Kq6hhi",
+    animation: "QmXXs6n7areuC2bGX5HRAYp5z2crjJhWT9nAc2SH5JhcyD",
+  },
+  {
+    id: 3,
+    image: "QmWfXkR7Zn1LdmmHm9RsXTSvC8wJv1VXLX585gLTYhRAZa",
+    animation: "QmaCWqTHoecRajZW9XaWBu9kdLe5xC46mmP93xs662UfPK",
   },
 ];
 
@@ -301,3 +321,5 @@ export const SHOP_NFTS: { id: number; image: string; animation: string }[] = [
     animation: "QmaEkLZ3pkksE48qam45jX5YFa9bNTKR5HjpQEgRebkQMS",
   },
 ];
+
+
