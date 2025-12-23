@@ -236,7 +236,7 @@ export const CAFES_VIDEOS: Record<Language, string> = {
   fa: "QmVLPvQWbEWurTnWXSnJBoiLJFijZjj3hAXwJRNYWbrDPZ",
 };
 export const RUNWAYX_VIDEOS: Record<Language, string> = {
-  en: "QmYrhheK8BAJTfbqBB1qEbuQVM6fseRciMACecD6bpEHj1",
+  en: "QmXPkDaMeERa7hFv2x7aDvGgd7iUThSegSPMxkVhhUs93q",
   es: "QmTSrJt8NkjgZhkve4PFRrjBmjdG3z7VuW27KkhTaeNMk4",
   pt: "QmbGRoK8DJftMkeQiExcgGV26s73vt6nAanw35bVt2niyJ",
   ar: "QmXcVhxr4zvdLp95BnAg7JEKt6oxaCPDS8w4nYeuLG7stK",
