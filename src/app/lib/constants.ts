@@ -80,81 +80,90 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     comingSoon: true,
   },
   {
-    id: "tbd4",
-    component: "TBD",
-    title: "???",
+    id: "runwayc",
+    component: "RunwayC",
+    title: "RUNWAY C",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
   },
   {
-    id: "tbd5",
-    component: "TBD",
-    title: "???",
+    id: "patternlibrary",
+    component: "PatternLibrary",
+    title: "patternlibrary",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
   },
   {
-    id: "tbd6",
-    component: "TBD",
-    title: "???",
+    id: "onboardingcrisis",
+    component: "OnboardingCrisis",
+    title: "onboardingcrisis",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
   },
   {
-    id: "tbd7",
-    component: "TBD",
-    title: "???",
+    id: "runwayo",
+    component: "RunwayO",
+    title: "RUNWAY O",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
   },
   {
-    id: "tbd8",
-    component: "TBD",
-    title: "???",
+    id: "dressingroom",
+    component: "DressingRoom",
+    title: "dressingroom",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
   },
   {
-    id: "tbd9",
-    component: "TBD",
-    title: "???",
+    id: "runwaym",
+    component: "RunwayM",
+    title: "RUNWAY M",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
   },
   {
-    id: "tbd10",
-    component: "TBD",
-    title: "???",
+    id: "ifyoubuildit",
+    component: "IfYouBuildIt",
+    title: "ifyoubuildit",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
   },
   {
-    id: "tbd11",
-    component: "TBD",
-    title: "???",
+    id: "runwayp",
+    component: "RunwayP",
+    title: "RUNWAY P",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
     comingSoon: true,
   },
   {
-    id: "tbd12",
-    component: "TBD",
-    title: "???",
+    id: "modelseesyou",
+    component: "ModelSeesYou",
+    title: "modelseesyou",
+    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
+    locked: false,
+    hasTask: false,
+    comingSoon: true,
+  },
+  {
+    id: "lookingglass",
+    component: "LookingGlass",
+    title: "lookingglass",
     image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
     locked: false,
     hasTask: false,
@@ -247,7 +256,6 @@ export const MONA_TOKEN: `0x${string}` =
 export const GENESIS_NFT: `0x${string}` =
   "0xE69dAB02100d3989bCA736a0FE1239CbFcf2cE01";
 
-
 export const CAKE_NFTS: { id: number; image: string; animation: string }[] = [
   {
     id: 1,
@@ -271,7 +279,11 @@ export const CAKE_NFTS: { id: number; image: string; animation: string }[] = [
   },
 ];
 
-export const DARKGLASS_NFTS: { id: number; image: string; animation: string }[] = [
+export const DARKGLASS_NFTS: {
+  id: number;
+  image: string;
+  animation: string;
+}[] = [
   {
     id: 1,
     image: "QmRnuPTSXy92dnGhRwDtbQMCjuiiBwppycCAb15Axh1QKK",
@@ -321,5 +333,3 @@ export const SHOP_NFTS: { id: number; image: string; animation: string }[] = [
     animation: "QmaEkLZ3pkksE48qam45jX5YFa9bNTKR5HjpQEgRebkQMS",
   },
 ];
-
-
