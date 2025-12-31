@@ -29,6 +29,7 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
     hasCompletedShopTheLooks,
     hasCompletedEatCake,
     hasCompletedDarkGlass,
+    hasCompletedTunnel58,
   } = useQuestStatus(lang as Language);
 
   const handleNavigate = (index: number) => {

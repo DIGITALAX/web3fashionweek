@@ -56,6 +56,17 @@ export const useQuestStatus = (lang: Language) => {
     account: address,
   });
 
+  const { data: hasCompletedTunnel58, refetch: refetchTunnel58 } = useReadContract({
+    address: QUEST_CONTRACT,
+    abi: W3FWQuestABI,
+    functionName: "hasCompletedStep",
+    args: [BigInt(5), address, langId],
+    query: {
+      enabled: !!address && isConnected,
+    },
+    account: address,
+  });
+
   useEffect(() => {
     const tasks: string[] = [];
 
@@ -95,8 +106,12 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("tunnel57");
     }
 
+    if (hasCompletedTunnel58) {
+      tasks.push("tunnel58");
+    }
+
     setCompletedTasks(tasks);
-  }, [lang, hasCompletedWhiteRabbit, hasCompletedShopTheLooks, hasCompletedEatCake, hasCompletedDarkGlass]);
+  }, [lang, hasCompletedWhiteRabbit, hasCompletedShopTheLooks, hasCompletedEatCake, hasCompletedDarkGlass, hasCompletedTunnel58]);
 
   const markTaskComplete = (taskId: string) => {
     if (!completedTasks.includes(taskId)) {
@@ -109,6 +124,7 @@ export const useQuestStatus = (lang: Language) => {
     refetchShopTheLooks();
     refetchEatCake();
     refetchDarkGlass();
+    refetchTunnel58();
   };
 
   return {
@@ -119,6 +135,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedShopTheLooks: hasCompletedShopTheLooks as boolean,
     hasCompletedEatCake: hasCompletedEatCake as boolean,
     hasCompletedDarkGlass: hasCompletedDarkGlass as boolean,
+    hasCompletedTunnel58: hasCompletedTunnel58 as boolean,
   };
 };
 
