@@ -16,6 +16,8 @@ import { WALKTHROUGH_ITEMS } from "@/app/lib/constants";
 import { Language } from "../types/walkthrough.types";
 import RunwayX from "./RunwayX";
 import DarkGlass from "./DarkGlass";
+import Tunnel57 from "./Tunnel57";
+import Tunnel58 from "./Tunnel58";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -114,6 +116,16 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             hasCompleted={hasCompletedDarkGlass}
           />
         );
+      case "Tunnel57":
+        return (
+          <Tunnel57
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("tunnel57")}
+          />
+        );
+      case "Tunnel58":
+        return <Tunnel58 dict={dict} lang={lang} />;
       default:
         return (
           <Node

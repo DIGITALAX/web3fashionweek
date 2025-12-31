@@ -42,21 +42,32 @@ export const useVideoProgress = (
     const video = videoRef.current;
     if (!video || isComplete) return;
 
-    const handleTimeUpdate = () => {
-      const percentWatched = (video.currentTime / video.duration) * 100;
-      if (percentWatched >= 95) {
-        setProgress(videoId);
-        setIsComplete(true);
-        if (onComplete) {
-          onComplete();
-        }
+    const handleComplete = () => {
+      setProgress(videoId);
+      setIsComplete(true);
+      if (onComplete) {
+        onComplete();
       }
     };
 
+    const handleTimeUpdate = () => {
+      if (!video.duration || isNaN(video.duration)) return;
+      const percentWatched = (video.currentTime / video.duration) * 100;
+      if (percentWatched >= 95) {
+        handleComplete();
+      }
+    };
+
+    const handleEnded = () => {
+      handleComplete();
+    };
+
     video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("ended", handleEnded);
 
     return () => {
       video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("ended", handleEnded);
     };
   }, [videoRef, videoId, isComplete, onComplete]);
 

@@ -71,13 +71,20 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     hasTask: true,
   },
   {
-    id: "workflows4090",
-    component: "Workflows4090",
-    title: "workflows4090",
-    image: "QmXU8EVTzs7jYzqFR8afihECFH9j6CXzviyY9bhxU6fkF4",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    id: "tunnel57",
+    component: "Tunnel57",
+    title: "Tunnel 57",
+    image: "QmQYDkwEFkMJiuu3G8fz3HijuFnSYpRYfBaCvwrjMCqK2y",
+    locked: true,
+    hasTask: true,
+  },
+  {
+    id: "tunnel58",
+    component: "Tunnel58",
+    title: "Tunnel 58",
+    image: "QmNpPstdEics5upFBA5qaSsFxpesvTguYU9aNReXWtoc1s",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "runwayc",
@@ -250,7 +257,13 @@ export const RUNWAYX_VIDEOS: Record<Language, string> = {
   ar: "QmXcVhxr4zvdLp95BnAg7JEKt6oxaCPDS8w4nYeuLG7stK",
   fa: "QmapZJAaHs3C6yhdPxPh6pyLdUBor8gkWKVExjvvUAyDNn",
 };
-
+export const TUNNEL57_VIDEOS: Record<Language, string> = {
+  en: "QmUi7eeL5EakpTmJSMngQPszStNiH5s7Szh5FpuHaKYmU8",
+  es: "QmXnmgxARhiAUkL9k6DqDHx3SnQ6B9hPBYZroaCtbXPz4w",
+  pt: "QmVwd7poT7aLhZxpALhygUZ8FmjRKis64tkxRxPeaXQKDr",
+  ar: "Qmb4yPKvyx7PHKsEAsDDxLK1ZQD2xLJ6qJnQ3vM5WYM7mw",
+  fa: "QmQbBxdWvtKUs4saKDcZLgcex6FnyjQR2ZUdSqsrFMx4MM",
+};
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
 export const GENESIS_NFT: `0x${string}` =
@@ -331,5 +344,13 @@ export const SHOP_NFTS: { id: number; image: string; animation: string }[] = [
     id: 6,
     image: "QmZfStnvHaSSMrM1XbUmikh4me4YUPDD6VTwig1gvAdSHG",
     animation: "QmaEkLZ3pkksE48qam45jX5YFa9bNTKR5HjpQEgRebkQMS",
+  },
+];
+
+export const TUNNEL_NFTS: { id: number; image: string; animation: string }[] = [
+  {
+    id: 1,
+    image: "Qmbz7iTbJJpU1QJ7n46p1CpHMaTQCTkSMzzfoFrLs2qkws",
+    animation: "QmYySt9uAYPvw7q4tZn7j3P3Z8rSMCBJ9K8xEKCeTq6DWF",
   },
 ];
