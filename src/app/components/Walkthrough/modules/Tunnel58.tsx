@@ -1,12 +1,14 @@
 "use client";
 
 import { ConnectKitButton } from "connectkit";
-import { NodeProps } from "@/app/components/Walkthrough/types/walkthrough.types";
+import { NodeProps, Language } from "@/app/components/Walkthrough/types/walkthrough.types";
 import { getFontCyn, getFontGrav, INFURA_GATEWAY, TUNNEL_NFTS } from "@/app/lib/constants";
+import useTunnel58 from "../hooks/useTunnel58";
 
 const Tunnel58 = ({ dict, lang }: NodeProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
+  const { mint, isMinting, isReady } = useTunnel58(lang as Language, dict);
 
   return (
     <div className="relative flex flex-col w-full h-full items-center justify-start overflow-y-scroll bg-black/30">
@@ -62,9 +64,11 @@ const Tunnel58 = ({ dict, lang }: NodeProps) => {
                       {truncatedAddress}
                     </button>
                     <button
-                      className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco text-blanco text-sm hover:bg-blanco/10 transition-colors`}
+                      onClick={mint}
+                      disabled={isMinting || !isReady}
+                      className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco text-blanco text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
-                      {dict?.mint}
+                      {isMinting ? dict?.minting : dict?.mint}
                     </button>
                   </div>
                 );
