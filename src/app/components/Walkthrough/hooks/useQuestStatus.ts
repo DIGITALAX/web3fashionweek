@@ -91,6 +91,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("darkglass");
     }
 
+    if (isVideoWatched(`tunnel57_${lang}`)) {
+      tasks.push("tunnel57");
+    }
+
     setCompletedTasks(tasks);
   }, [lang, hasCompletedWhiteRabbit, hasCompletedShopTheLooks, hasCompletedEatCake, hasCompletedDarkGlass]);
 
