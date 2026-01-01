@@ -72,6 +72,18 @@ export const useQuestStatus = (lang: Language) => {
       account: address,
     });
 
+  const { data: hasCompletedPatternLibrary, refetch: refetchPatternLibrary } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(6), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
+
   useEffect(() => {
     const tasks: string[] = [];
 
@@ -115,6 +127,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("tunnel58");
     }
 
+    if (hasCompletedPatternLibrary) {
+      tasks.push("patternlibrary");
+    }
+
     if (isVideoWatched(`runwayc_${lang}`)) {
       tasks.push("runwayc");
     }
@@ -127,6 +143,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedEatCake,
     hasCompletedDarkGlass,
     hasCompletedTunnel58,
+    hasCompletedPatternLibrary,
   ]);
 
   const markTaskComplete = (taskId: string) => {
@@ -141,6 +158,7 @@ export const useQuestStatus = (lang: Language) => {
     refetchEatCake();
     refetchDarkGlass();
     refetchTunnel58();
+    refetchPatternLibrary();
   };
 
   return {
@@ -152,6 +170,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedEatCake: hasCompletedEatCake as boolean,
     hasCompletedDarkGlass: hasCompletedDarkGlass as boolean,
     hasCompletedTunnel58: hasCompletedTunnel58 as boolean,
+    hasCompletedPatternLibrary: hasCompletedPatternLibrary as boolean,
   };
 };
 

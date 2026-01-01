@@ -99,9 +99,8 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     component: "PatternLibrary",
     title: "patternlibrary",
     image: "QmZTk1h7cg8QftjnQbsd8UMpVD8sPDaY1nRiPgsyf4511D",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    locked: true,
+    hasTask: true,
   },
   {
     id: "onboardingcrisis",
@@ -360,3 +359,22 @@ export const TUNNEL_NFTS: { id: number; image: string; animation: string }[] = [
     animation: "QmYySt9uAYPvw7q4tZn7j3P3Z8rSMCBJ9K8xEKCeTq6DWF",
   },
 ];
+
+export const LIBRARY_NFTS: { id: number; image: string; animation: string }[] =
+  [
+    {
+      id: 1,
+      image: "QmbTHhdSjfsydwFXErt9FHegknWoXA1xPp8rcqT4PTJbCZ",
+      animation: "QmSUt5p1YJ4vBrf7QxGKEgUQacoYQ9zurnEgEjpXzYerJ1",
+    },
+    {
+      id: 2,
+      image: "QmTV3ehrkMNKaRJEmvUKU946mPoTQ8AiJkHQNkuCY7FKkW",
+      animation: "QmcPEQcwxykQM9vg5eAgRgNGP6i9CmChSpYmtERic3yham",
+    },
+    {
+      id: 3,
+      image: "QmVvq6VzcYSGeQZDWCfYZgv6USH6tPiAwFxZn5DZ85op1s",
+      animation: "QmULxCtHpaC81419n1pEzZuTAsA6EQB12SkLuAbLEvksts",
+    },
+  ];

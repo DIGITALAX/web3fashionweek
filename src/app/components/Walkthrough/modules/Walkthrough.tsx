@@ -19,6 +19,7 @@ import RunwayC from "./RunwayC";
 import DarkGlass from "./DarkGlass";
 import Tunnel57 from "./Tunnel57";
 import Tunnel58 from "./Tunnel58";
+import PatternLibrary from "./PatternLibrary";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -31,6 +32,7 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
     hasCompletedEatCake,
     hasCompletedDarkGlass,
     hasCompletedTunnel58,
+    hasCompletedPatternLibrary,
   } = useQuestStatus(lang as Language);
 
   const handleNavigate = (index: number) => {
@@ -128,6 +130,15 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
         );
       case "Tunnel58":
         return <Tunnel58 dict={dict} lang={lang} />;
+      case "PatternLibrary":
+        return (
+          <PatternLibrary
+            dict={dict}
+            lang={lang}
+            onComplete={() => handleTaskComplete("patternlibrary")}
+            hasCompleted={hasCompletedPatternLibrary}
+          />
+        );
       case "RunwayC":
         return (
           <RunwayC
