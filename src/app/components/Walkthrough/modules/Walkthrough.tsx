@@ -15,6 +15,7 @@ import useQuestStatus from "../hooks/useQuestStatus";
 import { WALKTHROUGH_ITEMS } from "@/app/lib/constants";
 import { Language } from "../types/walkthrough.types";
 import RunwayX from "./RunwayX";
+import RunwayC from "./RunwayC";
 import DarkGlass from "./DarkGlass";
 import Tunnel57 from "./Tunnel57";
 import Tunnel58 from "./Tunnel58";
@@ -127,6 +128,14 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
         );
       case "Tunnel58":
         return <Tunnel58 dict={dict} lang={lang} />;
+      case "RunwayC":
+        return (
+          <RunwayC
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("runwayc")}
+          />
+        );
       default:
         return (
           <Node

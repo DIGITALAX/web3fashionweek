@@ -90,16 +90,15 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "runwayc",
     component: "RunwayC",
     title: "RUNWAY C",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    image: "QmS2DxonJWDUEXZEMdAbjuSrNVoMeQxfifsQWtNnkSHA21",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "patternlibrary",
     component: "PatternLibrary",
     title: "patternlibrary",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
+    image: "QmZTk1h7cg8QftjnQbsd8UMpVD8sPDaY1nRiPgsyf4511D",
     locked: false,
     hasTask: false,
     comingSoon: true,
@@ -263,6 +262,13 @@ export const TUNNEL57_VIDEOS: Record<Language, string> = {
   pt: "QmVwd7poT7aLhZxpALhygUZ8FmjRKis64tkxRxPeaXQKDr",
   ar: "Qmb4yPKvyx7PHKsEAsDDxLK1ZQD2xLJ6qJnQ3vM5WYM7mw",
   fa: "QmQbBxdWvtKUs4saKDcZLgcex6FnyjQR2ZUdSqsrFMx4MM",
+};
+export const RUNWAYC_VIDEOS: Record<Language, string> = {
+  en: "QmZrNFotx2iU2F8dcev2uVcwHH32rA92vnSixishcDVyt4",
+  es: "QmZrNFotx2iU2F8dcev2uVcwHH32rA92vnSixishcDVyt4",
+  pt: "QmZrNFotx2iU2F8dcev2uVcwHH32rA92vnSixishcDVyt4",
+  ar: "QmZrNFotx2iU2F8dcev2uVcwHH32rA92vnSixishcDVyt4",
+  fa: "QmZrNFotx2iU2F8dcev2uVcwHH32rA92vnSixishcDVyt4",
 };
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";

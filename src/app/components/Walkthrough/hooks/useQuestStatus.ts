@@ -12,60 +12,65 @@ export const useQuestStatus = (lang: Language) => {
   const [completedTasks, setCompletedTasks] = useState<string[]>([]);
   const langId = getLangId(lang);
 
-  const { data: hasCompletedWhiteRabbit, refetch: refetchWhiteRabbit } = useReadContract({
-    address: QUEST_CONTRACT,
-    abi: W3FWQuestABI,
-    functionName: "hasCompletedStep",
-    args: [BigInt(1), address, langId],
-    query: {
-      enabled: !!address && isConnected,
-    },
-    account: address,
-  });
+  const { data: hasCompletedWhiteRabbit, refetch: refetchWhiteRabbit } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(1), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
 
-  const { data: hasCompletedShopTheLooks, refetch: refetchShopTheLooks } = useReadContract({
-    address: QUEST_CONTRACT,
-    abi: W3FWQuestABI,
-    functionName: "hasCompletedStep",
-    args: [BigInt(2), address, langId],
-    query: {
-      enabled: !!address && isConnected,
-    },
-    account: address,
-  });
+  const { data: hasCompletedShopTheLooks, refetch: refetchShopTheLooks } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(2), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
 
-  const { data: hasCompletedEatCake, refetch: refetchEatCake } = useReadContract({
-    address: QUEST_CONTRACT,
-    abi: W3FWQuestABI,
-    functionName: "hasCompletedStep",
-    args: [BigInt(3), address, langId],
-    query: {
-      enabled: !!address && isConnected,
-    },
-    account: address,
-  });
+  const { data: hasCompletedEatCake, refetch: refetchEatCake } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(3), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
 
-  const { data: hasCompletedDarkGlass, refetch: refetchDarkGlass } = useReadContract({
-    address: QUEST_CONTRACT,
-    abi: W3FWQuestABI,
-    functionName: "hasCompletedStep",
-    args: [BigInt(4), address, langId],
-    query: {
-      enabled: !!address && isConnected,
-    },
-    account: address,
-  });
+  const { data: hasCompletedDarkGlass, refetch: refetchDarkGlass } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(4), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
 
-  const { data: hasCompletedTunnel58, refetch: refetchTunnel58 } = useReadContract({
-    address: QUEST_CONTRACT,
-    abi: W3FWQuestABI,
-    functionName: "hasCompletedStep",
-    args: [BigInt(5), address, langId],
-    query: {
-      enabled: !!address && isConnected,
-    },
-    account: address,
-  });
+  const { data: hasCompletedTunnel58, refetch: refetchTunnel58 } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(5), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
 
   useEffect(() => {
     const tasks: string[] = [];
@@ -110,8 +115,19 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("tunnel58");
     }
 
+    if (isVideoWatched(`runwayc_${lang}`)) {
+      tasks.push("runwayc");
+    }
+
     setCompletedTasks(tasks);
-  }, [lang, hasCompletedWhiteRabbit, hasCompletedShopTheLooks, hasCompletedEatCake, hasCompletedDarkGlass, hasCompletedTunnel58]);
+  }, [
+    lang,
+    hasCompletedWhiteRabbit,
+    hasCompletedShopTheLooks,
+    hasCompletedEatCake,
+    hasCompletedDarkGlass,
+    hasCompletedTunnel58,
+  ]);
 
   const markTaskComplete = (taskId: string) => {
     if (!completedTasks.includes(taskId)) {
