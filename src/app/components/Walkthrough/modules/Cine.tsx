@@ -10,7 +10,7 @@ const Cine = ({ dict, lang, onVideoComplete }: NodeProps) => {
       dict={dict}
       lang={lang}
       videos={CINE_VIDEOS}
-      storageKey="cine"
+      storageKey="onboardingcrisis"
       onVideoComplete={onVideoComplete}
     />
   );

@@ -135,8 +135,8 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("runwayc");
     }
 
-    if (isVideoWatched(`cine_${lang}`)) {
-      tasks.push("cine");
+    if (isVideoWatched(`onboardingcrisis_${lang}`)) {
+      tasks.push("onboardingcrisis");
     }
 
     setCompletedTasks(tasks);

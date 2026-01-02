@@ -153,7 +153,7 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
           <Cine
             dict={dict}
             lang={lang}
-            onVideoComplete={() => handleTaskComplete("cine")}
+            onVideoComplete={() => handleTaskComplete("onboardingcrisis")}
           />
         );
       default:
