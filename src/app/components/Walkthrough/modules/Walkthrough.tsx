@@ -20,6 +20,7 @@ import DarkGlass from "./DarkGlass";
 import Tunnel57 from "./Tunnel57";
 import Tunnel58 from "./Tunnel58";
 import PatternLibrary from "./PatternLibrary";
+import Cine from "./Cine"
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -145,6 +146,14 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             dict={dict}
             lang={lang}
             onVideoComplete={() => handleTaskComplete("runwayc")}
+          />
+        );
+        case "OnboardingCrisis":
+        return (
+          <Cine
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("cine")}
           />
         );
       default:

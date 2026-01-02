@@ -106,10 +106,9 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "onboardingcrisis",
     component: "OnboardingCrisis",
     title: "onboardingcrisis",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    image: "QmUoWZAqbWwryVGiPsZujQmU82t7k8VB3bcTRJKzrdemgW",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "runwayo",
@@ -268,6 +267,13 @@ export const RUNWAYC_VIDEOS: Record<Language, string> = {
   pt: "QmZrNFotx2iU2F8dcev2uVcwHH32rA92vnSixishcDVyt4",
   ar: "QmZrNFotx2iU2F8dcev2uVcwHH32rA92vnSixishcDVyt4",
   fa: "QmZrNFotx2iU2F8dcev2uVcwHH32rA92vnSixishcDVyt4",
+};
+export const CINE_VIDEOS: Record<Language, string> = {
+  en: "QmaFjRycvixHKq99YybpcotS3veGYzY9o8ucDiHSRjpmJG",
+  es: "QmP6qaiZtbCmQG1W2bkQKXBzo6wP7jSH64SshByBfx1NUV",
+  pt: "QmWhANopv1i9PBdmPHRamTsB776XFhQRVRBSTDG9wYNFXP",
+  ar: "QmUDAYGQJcWshCkjYvstMGzAP7J69JUvzPFH89aG2BiD5j",
+  fa: "QmUbhcLrXkEU1Z1Di1PZVkMCgE93xot5EgpC5JQ6fAhVGQ",
 };
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";

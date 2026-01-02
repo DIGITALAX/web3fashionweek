@@ -135,6 +135,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("runwayc");
     }
 
+    if (isVideoWatched(`cine_${lang}`)) {
+      tasks.push("cine");
+    }
+
     setCompletedTasks(tasks);
   }, [
     lang,
