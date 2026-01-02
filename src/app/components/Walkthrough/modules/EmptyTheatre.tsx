@@ -2,25 +2,30 @@
 
 import { ConnectKitButton } from "connectkit";
 import {
-  NodeProps,
+  EmptyTheatreProps,
   Language,
-  Tunnel58Props,
 } from "@/app/components/Walkthrough/types/walkthrough.types";
 import {
   getFontCyn,
   getFontGrav,
   INFURA_GATEWAY,
-  TUNNEL_NFTS,
+  CAKE_NFTS,
+  CINE_NFTS,
 } from "@/app/lib/constants";
 import useCompleteStep from "../hooks/useCompleteStep";
 
-const Tunnel58 = ({ dict, lang, onComplete, hasCompleted }: Tunnel58Props) => {
+const EmptyTheatre = ({
+  dict,
+  lang,
+  onComplete,
+  hasCompleted,
+}: EmptyTheatreProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
   const { mint, isMinting, isReady } = useCompleteStep(
     lang as Language,
     dict,
-    5,
+    7,
     onComplete,
     "stepCompleteSuccess",
     "stepCompleteError"
@@ -32,19 +37,19 @@ const Tunnel58 = ({ dict, lang, onComplete, hasCompleted }: Tunnel58Props) => {
         <div className="relative flex flex-col w-full max-w-4xl items-center gap-6">
           <div className="relative flex flex-col w-full items-center gap-2">
             <span className={`${fontGrav} text-blanco text-2xl text-center`}>
-              {dict?.tunnel58}
+              {dict?.emptytheatre}
             </span>
             <span
               className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}
             >
-              {dict?.tunnel58Description}
+              {dict?.emptytheatreDescription}
             </span>
           </div>
           <div className="relative flex flex-row flex-wrap w-full items-center justify-center gap-3">
-            {TUNNEL_NFTS.map((nft) => (
+            {CINE_NFTS.map((nft) => (
               <div
                 key={nft.id}
-                className="relative flex w-48 h-36 sm:w-60 sm:h-44 border border-blanco/30"
+                className="relative flex w-52 h-60 sm:w-80 sm:h-72 border border-blanco/30"
               >
                 <video
                   muted
@@ -113,4 +118,4 @@ const Tunnel58 = ({ dict, lang, onComplete, hasCompleted }: Tunnel58Props) => {
   );
 };
 
-export default Tunnel58;
+export default EmptyTheatre;

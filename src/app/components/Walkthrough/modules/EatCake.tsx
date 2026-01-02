@@ -3,12 +3,19 @@
 import { ConnectKitButton } from "connectkit";
 import { EatCakeProps, Language } from "@/app/components/Walkthrough/types/walkthrough.types";
 import { getFontCyn, getFontGrav, INFURA_GATEWAY, CAKE_NFTS } from "@/app/lib/constants";
-import useEatCake from "../hooks/useEatCake";
+import useCompleteStep from "../hooks/useCompleteStep";
 
 const EatCake = ({ dict, lang, onComplete, hasCompleted }: EatCakeProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
-  const { mint, isMinting, isReady } = useEatCake(lang as Language, dict, onComplete);
+  const { mint, isMinting, isReady } = useCompleteStep(
+    lang as Language,
+    dict,
+    3,
+    onComplete,
+    "cakeMintSuccess",
+    "cakeMintError"
+  );
 
   return (
     <div className="relative flex flex-col w-full h-full items-center justify-start overflow-y-scroll bg-black/30">

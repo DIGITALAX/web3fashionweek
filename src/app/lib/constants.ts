@@ -97,7 +97,7 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
   {
     id: "patternlibrary",
     component: "PatternLibrary",
-    title: "patternlibrary",
+    title: "Pattern Library",
     image: "QmZTk1h7cg8QftjnQbsd8UMpVD8sPDaY1nRiPgsyf4511D",
     locked: true,
     hasTask: true,
@@ -105,8 +105,16 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
   {
     id: "onboardingcrisis",
     component: "OnboardingCrisis",
-    title: "onboardingcrisis",
+    title: "Onboarding Crisis",
     image: "QmUoWZAqbWwryVGiPsZujQmU82t7k8VB3bcTRJKzrdemgW",
+    locked: true,
+    hasTask: true,
+  },
+  {
+    id: "emptytheatre",
+    component: "EmptyTheatre",
+    title: "Empty Theatre",
+    image: "QmTFgiNeToCM47epRUdfDh1ETMufCPFy2GaZQz19qjMXbE",
     locked: true,
     hasTask: true,
   },
@@ -384,3 +392,11 @@ export const LIBRARY_NFTS: { id: number; image: string; animation: string }[] =
       animation: "QmULxCtHpaC81419n1pEzZuTAsA6EQB12SkLuAbLEvksts",
     },
   ];
+
+export const CINE_NFTS: { id: number; image: string; animation: string }[] = [
+  {
+    id: 1,
+    image: "Qmchsq4BNzW9tzKvyfPDySmVbY2cKri3ZSMQGKM8U2tfep",
+    animation: "Qme8SDLHc8s7xGZosxvBXSjHT9tdnHZgV5gRdd8vk7XHKU",
+  },
+];

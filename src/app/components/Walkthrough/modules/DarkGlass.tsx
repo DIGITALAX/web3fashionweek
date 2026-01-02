@@ -1,21 +1,35 @@
 "use client";
 
 import { ConnectKitButton } from "connectkit";
-import { DarkGlassProps, Language } from "@/app/components/Walkthrough/types/walkthrough.types";
-import { getFontCyn, getFontGrav, INFURA_GATEWAY, DARKGLASS_NFTS } from "@/app/lib/constants";
-import useDarkGlass from "../hooks/useDarkGlass";
+import {
+  DarkGlassProps,
+  Language,
+} from "@/app/components/Walkthrough/types/walkthrough.types";
+import {
+  getFontCyn,
+  getFontGrav,
+  INFURA_GATEWAY,
+  DARKGLASS_NFTS,
+} from "@/app/lib/constants";
+import useCompleteStep from "../hooks/useCompleteStep";
 
-const DarkGlass = ({ dict, lang, onComplete, hasCompleted }: DarkGlassProps) => {
+const DarkGlass = ({
+  dict,
+  lang,
+  onComplete,
+  hasCompleted,
+}: DarkGlassProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
-  const {
-    mint,
-    completeStep,
-    isMinting,
-    isCompleting,
-    canMint,
-    isReady
-  } = useDarkGlass(lang as Language, dict, onComplete);
+  const { mint, isMinting, hasEnoughMona, hasEnoughGenesis, isReady } =
+    useCompleteStep(
+      lang as Language,
+      dict,
+      4,
+      onComplete,
+      "darkglassMintSuccess",
+      "darkglassMintError"
+    );
 
   return (
     <div className="relative flex flex-col w-full h-full items-center justify-start overflow-y-scroll bg-black/30">
@@ -25,10 +39,16 @@ const DarkGlass = ({ dict, lang, onComplete, hasCompleted }: DarkGlassProps) => 
             <span className={`${fontGrav} text-blanco text-2xl text-center`}>
               {dict?.darkglass}
             </span>
-            <span className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}>
+            <span
+              className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}
+            >
               {dict?.darkglassDescription}{" "}
               <a
-                href={lang === "es" || lang === "pt" ? "https://globaldesignernetwork.com/es/market/" : "https://globaldesignernetwork.com/market/"}
+                href={
+                  lang === "es" || lang === "pt"
+                    ? "https://globaldesignernetwork.com/es/market/"
+                    : "https://globaldesignernetwork.com/market/"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-blanco transition-colors"
@@ -53,7 +73,10 @@ const DarkGlass = ({ dict, lang, onComplete, hasCompleted }: DarkGlassProps) => 
                     className="absolute inset-0 w-full h-full object-cover"
                     poster={`${INFURA_GATEWAY}/ipfs/${nft.image}`}
                   >
-                    <source src={`${INFURA_GATEWAY}/ipfs/${nft.animation}`} type="video/mp4" />
+                    <source
+                      src={`${INFURA_GATEWAY}/ipfs/${nft.animation}`}
+                      type="video/mp4"
+                    />
                   </video>
                 </div>
               ))}
@@ -69,14 +92,19 @@ const DarkGlass = ({ dict, lang, onComplete, hasCompleted }: DarkGlassProps) => 
                   className="absolute inset-0 w-full h-full object-cover"
                   poster={`${INFURA_GATEWAY}/ipfs/${DARKGLASS_NFTS[2].image}`}
                 >
-                  <source src={`${INFURA_GATEWAY}/ipfs/${DARKGLASS_NFTS[2].animation}`} type="video/mp4" />
+                  <source
+                    src={`${INFURA_GATEWAY}/ipfs/${DARKGLASS_NFTS[2].animation}`}
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             </div>
           </div>
           {hasCompleted && (
             <div className="relative flex w-full items-center justify-center">
-              <div className={`${fontCyn} text-green-400 text-sm bg-green-500/20 px-4 py-2`}>
+              <div
+                className={`${fontCyn} text-green-400 text-sm bg-green-500/20 px-4 py-2`}
+              >
                 {dict?.cleared}
               </div>
             </div>
@@ -103,30 +131,29 @@ const DarkGlass = ({ dict, lang, onComplete, hasCompleted }: DarkGlassProps) => 
                       >
                         {truncatedAddress}
                       </button>
-                      {canMint ? (
-                        <button
-                          onClick={mint}
-                          disabled={isMinting || !isReady}
-                          className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco text-blanco text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
-                        >
-                          {isMinting ? dict?.minting : dict?.mint}
-                        </button>
-                      ) : (
-                        <button
-                          onClick={completeStep}
-                          disabled={isCompleting || !isReady}
-                          className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco/50 text-blanco/70 text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
-                        >
-                          {isCompleting
-                            ? (dict?.completing || "...")
-                            : (dict?.completeStep || "COMPLETE STEP")}
-                        </button>
-                      )}
-                      {!canMint && (
-                        <span className={`${fontCyn} text-blanco/50 text-xs text-center max-w-xs`}>
-                          {dict?.darkglassGateInfo}
-                        </span>
-                      )}
+
+                      <button
+                        onClick={mint}
+                        disabled={isMinting || !isReady}
+                        className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco text-blanco text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
+                      >
+                        {isMinting && (hasEnoughMona || hasEnoughGenesis)
+                          ? dict?.minting
+                          : !isMinting && (hasEnoughMona || hasEnoughGenesis)
+                          ? dict?.mint
+                          : isMinting
+                          ? dict?.completing
+                          : dict?.completeStep}
+                      </button>
+
+                      {!hasEnoughMona ||
+                        (hasEnoughGenesis && (
+                          <span
+                            className={`${fontCyn} text-blanco/50 text-xs text-center max-w-xs`}
+                          >
+                            {dict?.darkglassGateInfo}
+                          </span>
+                        ))}
                     </div>
                   );
                 }}

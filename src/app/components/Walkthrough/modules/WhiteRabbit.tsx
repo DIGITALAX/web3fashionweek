@@ -1,14 +1,35 @@
 "use client";
 
 import { ConnectKitButton } from "connectkit";
-import { WhiteRabbitProps, Language } from "@/app/components/Walkthrough/types/walkthrough.types";
-import { getFontCyn, getFontGrav, INFURA_GATEWAY, WHITE_RABBIT_VIDEO, WHITE_RABBIT_IMAGE } from "@/app/lib/constants";
-import useWhiteRabbitMint from "../hooks/useWhiteRabbit";
+import {
+  WhiteRabbitProps,
+  Language,
+} from "@/app/components/Walkthrough/types/walkthrough.types";
+import {
+  getFontCyn,
+  getFontGrav,
+  INFURA_GATEWAY,
+  WHITE_RABBIT_VIDEO,
+  WHITE_RABBIT_IMAGE,
+} from "@/app/lib/constants";
+import useCompleteStep from "../hooks/useCompleteStep";
 
-const WhiteRabbit = ({ dict, lang, onMintComplete, hasCompleted }: WhiteRabbitProps) => {
+const WhiteRabbit = ({
+  dict,
+  lang,
+  onMintComplete,
+  hasCompleted,
+}: WhiteRabbitProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
-  const { mint, isMinting, isReady } = useWhiteRabbitMint(lang as Language, dict, onMintComplete);
+  const { mint, isMinting, isReady } = useCompleteStep(
+    lang as Language,
+    dict,
+    1,
+    onMintComplete,
+    "mintSuccess",
+    "mintError"
+  );
 
   return (
     <div className="relative flex flex-col w-full h-full items-center justify-center">
@@ -24,7 +45,10 @@ const WhiteRabbit = ({ dict, lang, onMintComplete, hasCompleted }: WhiteRabbitPr
               className="absolute inset-0 w-full h-full object-cover"
               poster={`${INFURA_GATEWAY}/ipfs/${WHITE_RABBIT_IMAGE}`}
             >
-              <source src={`${INFURA_GATEWAY}/ipfs/${WHITE_RABBIT_VIDEO}`} type="video/mp4" />
+              <source
+                src={`${INFURA_GATEWAY}/ipfs/${WHITE_RABBIT_VIDEO}`}
+                type="video/mp4"
+              />
             </video>
             {hasCompleted && (
               <div className="absolute top-2 flex items-center justify-center text-center right-2 bg-green-500/80 px-2 py-1">

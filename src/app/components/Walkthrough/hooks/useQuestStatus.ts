@@ -84,6 +84,18 @@ export const useQuestStatus = (lang: Language) => {
       account: address,
     });
 
+  const { data: hasCompletedEmptyTheatre, refetch: refetchEmptyTheatre } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(7), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
+
   useEffect(() => {
     const tasks: string[] = [];
 
@@ -139,6 +151,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("onboardingcrisis");
     }
 
+    if (hasCompletedEmptyTheatre) {
+      tasks.push("emptytheatre");
+    }
+
     setCompletedTasks(tasks);
   }, [
     lang,
@@ -148,6 +164,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedDarkGlass,
     hasCompletedTunnel58,
     hasCompletedPatternLibrary,
+    hasCompletedEmptyTheatre,
   ]);
 
   const markTaskComplete = (taskId: string) => {
@@ -163,6 +180,7 @@ export const useQuestStatus = (lang: Language) => {
     refetchDarkGlass();
     refetchTunnel58();
     refetchPatternLibrary();
+    refetchEmptyTheatre();
   };
 
   return {
@@ -175,6 +193,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedDarkGlass: hasCompletedDarkGlass as boolean,
     hasCompletedTunnel58: hasCompletedTunnel58 as boolean,
     hasCompletedPatternLibrary: hasCompletedPatternLibrary as boolean,
+    hasCompletedEmptyTheatre: hasCompletedEmptyTheatre as boolean,
   };
 };
 

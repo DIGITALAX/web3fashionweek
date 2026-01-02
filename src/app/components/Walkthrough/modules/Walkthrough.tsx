@@ -20,7 +20,8 @@ import DarkGlass from "./DarkGlass";
 import Tunnel57 from "./Tunnel57";
 import Tunnel58 from "./Tunnel58";
 import PatternLibrary from "./PatternLibrary";
-import Cine from "./Cine"
+import Cine from "./Cine";
+import EmptyTheatre from "./EmptyTheatre";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -34,6 +35,7 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
     hasCompletedDarkGlass,
     hasCompletedTunnel58,
     hasCompletedPatternLibrary,
+    hasCompletedEmptyTheatre,
   } = useQuestStatus(lang as Language);
 
   const handleNavigate = (index: number) => {
@@ -130,7 +132,14 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
           />
         );
       case "Tunnel58":
-        return <Tunnel58 dict={dict} lang={lang} />;
+        return (
+          <Tunnel58
+            dict={dict}
+            lang={lang}
+            onComplete={() => handleTaskComplete("tunnel58")}
+            hasCompleted={hasCompletedTunnel58}
+          />
+        );
       case "PatternLibrary":
         return (
           <PatternLibrary
@@ -148,12 +157,21 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             onVideoComplete={() => handleTaskComplete("runwayc")}
           />
         );
-        case "OnboardingCrisis":
+      case "OnboardingCrisis":
         return (
           <Cine
             dict={dict}
             lang={lang}
             onVideoComplete={() => handleTaskComplete("onboardingcrisis")}
+          />
+        );
+      case "EmptyTheatre":
+        return (
+          <EmptyTheatre
+            dict={dict}
+            lang={lang}
+            onComplete={() => handleTaskComplete("emptytheatre")}
+            hasCompleted={hasCompletedEmptyTheatre}
           />
         );
       default:

@@ -1,14 +1,34 @@
 "use client";
 
 import { ConnectKitButton } from "connectkit";
-import { EatCakeProps, Language } from "@/app/components/Walkthrough/types/walkthrough.types";
-import { getFontCyn, getFontGrav, INFURA_GATEWAY, LIBRARY_NFTS } from "@/app/lib/constants";
-import usePatternLibrary from "../hooks/usePatternLibrary";
+import {
+  EatCakeProps,
+  Language,
+} from "@/app/components/Walkthrough/types/walkthrough.types";
+import {
+  getFontCyn,
+  getFontGrav,
+  INFURA_GATEWAY,
+  LIBRARY_NFTS,
+} from "@/app/lib/constants";
+import useCompleteStep from "../hooks/useCompleteStep";
 
-const PatternLibrary = ({ dict, lang, onComplete, hasCompleted }: EatCakeProps) => {
+const PatternLibrary = ({
+  dict,
+  lang,
+  onComplete,
+  hasCompleted,
+}: EatCakeProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
-  const { mint, isMinting, isReady } = usePatternLibrary(lang as Language, dict, onComplete);
+  const { mint, isMinting, isReady } = useCompleteStep(
+    lang as Language,
+    dict,
+    6,
+    onComplete,
+    "stepCompleteSuccess",
+    "stepCompleteError"
+  );
 
   const getFGOLink = () => {
     const baseUrl = "https://fgo.themanufactory.xyz";
@@ -25,7 +45,9 @@ const PatternLibrary = ({ dict, lang, onComplete, hasCompleted }: EatCakeProps) 
             <span className={`${fontGrav} text-blanco text-2xl text-center`}>
               {dict?.patternlibrary}
             </span>
-            <span className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}>
+            <span
+              className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}
+            >
               {dict?.patternlibraryDescription}{" "}
               <a
                 href={getFGOLink()}
@@ -53,14 +75,19 @@ const PatternLibrary = ({ dict, lang, onComplete, hasCompleted }: EatCakeProps) 
                   className="absolute inset-0 w-full h-full object-cover"
                   poster={`${INFURA_GATEWAY}/ipfs/${nft.image}`}
                 >
-                  <source src={`${INFURA_GATEWAY}/ipfs/${nft.animation}`} type="video/mp4" />
+                  <source
+                    src={`${INFURA_GATEWAY}/ipfs/${nft.animation}`}
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             ))}
           </div>
           {hasCompleted && (
             <div className="relative flex w-full items-center justify-center">
-              <div className={`${fontCyn} text-green-400 text-sm bg-green-500/20 px-4 py-2`}>
+              <div
+                className={`${fontCyn} text-green-400 text-sm bg-green-500/20 px-4 py-2`}
+              >
                 {dict?.cleared}
               </div>
             </div>

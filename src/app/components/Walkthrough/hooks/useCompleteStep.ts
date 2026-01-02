@@ -1,24 +1,31 @@
 "use client";
 
-import { useState, useCallback, useContext } from "react";
+import { useState, useCallback, useContext, useEffect } from "react";
 import { useAccount, usePublicClient, useReadContract } from "wagmi";
-import { QUEST_CONTRACT, MONA_TOKEN, getLangId } from "@/app/lib/constants";
+import {
+  GENESIS_NFT,
+  MONA_TOKEN,
+  QUEST_CONTRACT,
+  getLangId,
+} from "@/app/lib/constants";
 import W3FWQuestABI from "@/abis/W3FWQuest.json";
 import { Language } from "../types/walkthrough.types";
 import { ModalContext } from "@/app/providers";
-import { createWalletClient, custom, erc20Abi } from "viem";
+import { createWalletClient, custom, erc20Abi, erc721Abi } from "viem";
 import { chains } from "@lens-chain/sdk/viem";
 
-export const useShopTheLooks = (
+export const useCompleteStep = (
   lang: Language,
   dict: any,
-  onSuccess?: () => void
+  step: number,
+  onSuccess?: () => void,
+  successKey: string = "mintSuccess",
+  errorKey: string = "mintError"
 ) => {
   const { address, isConnected } = useAccount();
   const publicClient = usePublicClient();
   const context = useContext(ModalContext);
   const [isMinting, setIsMinting] = useState<boolean>(false);
-  const [isCompleting, setIsCompleting] = useState<boolean>(false);
   const langId = getLangId(lang);
 
   const { data: monaBalance } = useReadContract({
@@ -31,11 +38,21 @@ export const useShopTheLooks = (
     },
   });
 
+  const { data: genesisBalance } = useReadContract({
+    address: GENESIS_NFT,
+    abi: erc721Abi,
+    functionName: "balanceOf",
+    args: address ? [address] : undefined,
+    query: {
+      enabled: !!address && isConnected,
+    },
+  });
+
   const { data: stepGates } = useReadContract({
     address: QUEST_CONTRACT,
     abi: W3FWQuestABI,
     functionName: "getStepERC20Gates",
-    args: [BigInt(2)],
+    args: [BigInt(step)],
   });
 
   const hasEnoughMona = (() => {
@@ -48,39 +65,38 @@ export const useShopTheLooks = (
     return monaBalance >= monaGate.requiredAmount;
   })();
 
-  const completeStep = useCallback(async () => {
-    if (!address || !isConnected || !publicClient) return;
+  const hasEnoughGenesis = (() => {
+    if (!genesisBalance || !stepGates || !Array.isArray(stepGates))
+      return false;
+    const genesisGate = stepGates.find(
+      (gate: { token: string; requiredAmount: bigint }) =>
+        gate.token.toLowerCase() === GENESIS_NFT.toLowerCase()
+    );
+    if (!genesisGate) return true;
+    return genesisBalance >= genesisGate.requiredAmount;
+  })();
 
-    const clientWallet = createWalletClient({
-      chain: chains.mainnet,
-      transport: custom((window as any).ethereum),
-    });
+  const { data: stepData } = useReadContract({
+    address: QUEST_CONTRACT,
+    abi: W3FWQuestABI,
+    functionName: "getStep",
+    args: [BigInt(step)],
+  });
 
-    setIsCompleting(true);
+  const { data: hasCompleted } = useReadContract({
+    address: QUEST_CONTRACT,
+    abi: W3FWQuestABI,
+    functionName: "hasCompletedStep",
+    args: [BigInt(step), address, langId],
+    query: {
+      enabled: !!address && isConnected,
+    },
+  });
 
-    try {
-      const hash = await clientWallet.writeContract({
-        address: QUEST_CONTRACT,
-        abi: W3FWQuestABI,
-        functionName: "completeStep",
-        args: [BigInt(2), langId],
-        account: address,
-      });
-
-      await publicClient.waitForTransactionReceipt({ hash });
-
-      onSuccess?.();
-      context?.showSuccess(dict?.stepCompleteSuccess || dict?.mintSuccess, hash);
-    } catch (err: any) {
-      console.error(err.message);
-      context?.showError(dict?.stepCompleteError || dict?.mintError);
-    }
-
-    setIsCompleting(false);
-  }, [address, isConnected, langId, publicClient, dict, onSuccess, context]);
+  useEffect(() => {}, [stepData, stepGates, hasCompleted, address, langId]);
 
   const mint = useCallback(async () => {
-    if (!address || !isConnected || !publicClient || !hasEnoughMona) return;
+    if (!address || !isConnected || !publicClient) return;
 
     const clientWallet = createWalletClient({
       chain: chains.mainnet,
@@ -94,17 +110,21 @@ export const useShopTheLooks = (
         address: QUEST_CONTRACT,
         abi: W3FWQuestABI,
         functionName: "completeStep",
-        args: [BigInt(2), langId],
+        args: [BigInt(step), langId],
         account: address,
       });
 
       await publicClient.waitForTransactionReceipt({ hash });
 
       onSuccess?.();
-      context?.showSuccess(dict?.shopMintSuccess || dict?.mintSuccess, hash);
+      context?.showSuccess(
+        dict?.[successKey] || dict?.mintSuccess,
+        hash
+      );
     } catch (err: any) {
-      console.error(err.message);
-      context?.showError(dict?.shopMintError || dict?.mintError);
+      console.error("Mint error:", err);
+      console.error("Error message:", err.message);
+      context?.showError(dict?.[errorKey] || dict?.mintError);
     }
 
     setIsMinting(false);
@@ -116,19 +136,19 @@ export const useShopTheLooks = (
     dict,
     onSuccess,
     context,
-    hasEnoughMona,
+    successKey,
+    errorKey,
   ]);
 
   return {
     isConnected,
     address,
     mint,
-    completeStep,
     isMinting,
-    isCompleting,
-    hasEnoughMona,
     isReady: !!publicClient,
+    hasEnoughMona,
+    hasEnoughGenesis,
   };
 };
 
-export default useShopTheLooks;
+export default useCompleteStep;

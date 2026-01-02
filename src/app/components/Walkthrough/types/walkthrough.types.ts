@@ -104,7 +104,22 @@ export interface EatCakeProps {
   hasCompleted?: boolean;
 }
 
+export interface EmptyTheatreProps {
+  dict: any;
+  lang: string;
+  onComplete?: () => void;
+  hasCompleted?: boolean;
+}
+
 export interface DarkGlassProps {
+  dict: any;
+  lang: string;
+  onComplete?: () => void;
+  hasCompleted?: boolean;
+}
+
+
+export interface Tunnel58Props {
   dict: any;
   lang: string;
   onComplete?: () => void;
@@ -119,7 +134,6 @@ export interface ShopNFT {
 
 export interface Profile {
   questStage: number;
-  
 }
 
 export interface SuccessData {
@@ -127,6 +141,6 @@ export interface SuccessData {
   txHash?: string;
 }
 
-export  interface ErrorData {
+export interface ErrorData {
   message: string;
 }

@@ -1,25 +1,39 @@
 "use client";
 
 import { ConnectKitButton } from "connectkit";
-import { ShopTheLooksProps, Language } from "@/app/components/Walkthrough/types/walkthrough.types";
-import { getFontCyn, getFontGrav, INFURA_GATEWAY, SHOP_NFTS } from "@/app/lib/constants";
-import useShopTheLooks from "../hooks/useShopTheLooks";
+import {
+  ShopTheLooksProps,
+  Language,
+} from "@/app/components/Walkthrough/types/walkthrough.types";
+import {
+  getFontCyn,
+  getFontGrav,
+  INFURA_GATEWAY,
+  SHOP_NFTS,
+} from "@/app/lib/constants";
+import useCompleteStep from "../hooks/useCompleteStep";
 
-const ShopTheLooks = ({ dict, lang, onComplete, hasCompleted }: ShopTheLooksProps) => {
+const ShopTheLooks = ({
+  dict,
+  lang,
+  onComplete,
+  hasCompleted,
+}: ShopTheLooksProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
-  const {
-    mint,
-    completeStep,
-    isMinting,
-    isCompleting,
-    hasEnoughMona,
-    isReady
-  } = useShopTheLooks(lang as Language, dict, onComplete);
+  const { mint, isMinting, hasEnoughMona, isReady } = useCompleteStep(
+    lang as Language,
+    dict,
+    2,
+    onComplete,
+    "shopMintSuccess",
+    "shopMintError"
+  );
 
-  const marketUrl = lang === "es" || lang === "pt"
-    ? "https://globaldesignernetwork.com/es/market/"
-    : "https://globaldesignernetwork.com/market/";
+  const marketUrl =
+    lang === "es" || lang === "pt"
+      ? "https://globaldesignernetwork.com/es/market/"
+      : "https://globaldesignernetwork.com/market/";
 
   return (
     <div className="relative flex flex-col w-full h-full items-center justify-start overflow-y-scroll bg-black/30">
@@ -29,7 +43,9 @@ const ShopTheLooks = ({ dict, lang, onComplete, hasCompleted }: ShopTheLooksProp
             <span className={`${fontGrav} text-blanco text-2xl text-center`}>
               {dict?.shopthelooks}
             </span>
-            <span className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}>
+            <span
+              className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}
+            >
               {dict?.shopDescription}{" "}
               <a
                 href={marketUrl}
@@ -56,14 +72,19 @@ const ShopTheLooks = ({ dict, lang, onComplete, hasCompleted }: ShopTheLooksProp
                   className="absolute inset-0 w-full h-full object-cover"
                   poster={`${INFURA_GATEWAY}/ipfs/${nft.image}`}
                 >
-                  <source src={`${INFURA_GATEWAY}/ipfs/${nft.animation}`} type="video/mp4" />
+                  <source
+                    src={`${INFURA_GATEWAY}/ipfs/${nft.animation}`}
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             ))}
           </div>
           {hasCompleted && (
             <div className="relative flex w-full items-center justify-center">
-              <div className={`${fontCyn} text-green-400 text-sm bg-green-500/20 px-4 py-2`}>
+              <div
+                className={`${fontCyn} text-green-400 text-sm bg-green-500/20 px-4 py-2`}
+              >
                 {dict?.cleared}
               </div>
             </div>
@@ -90,27 +111,25 @@ const ShopTheLooks = ({ dict, lang, onComplete, hasCompleted }: ShopTheLooksProp
                       >
                         {truncatedAddress}
                       </button>
-                      {hasEnoughMona ? (
-                        <button
-                          onClick={mint}
-                          disabled={isMinting || !isReady}
-                          className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco text-blanco text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
-                        >
-                          {isMinting ? dict?.minting : dict?.mint}
-                        </button>
-                      ) : (
-                        <button
-                          onClick={completeStep}
-                          disabled={isCompleting || !isReady}
-                          className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco/50 text-blanco/70 text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
-                        >
-                          {isCompleting
-                            ? (dict?.completing || "...")
-                            : (dict?.completeStep || "COMPLETE STEP")}
-                        </button>
-                      )}
+
+                      <button
+                        onClick={mint}
+                        disabled={isMinting || !isReady}
+                        className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco text-blanco text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
+                      >
+                        {hasEnoughMona && !isMinting
+                          ? dict?.mint
+                          : hasEnoughMona && isMinting
+                          ? dict?.minting
+                          : !hasEnoughMona && !isMinting
+                          ? dict?.completeStep
+                          : dict?.completing}
+                      </button>
+
                       {!hasEnoughMona && (
-                        <span className={`${fontCyn} text-blanco/50 text-xs text-center max-w-xs`}>
+                        <span
+                          className={`${fontCyn} text-blanco/50 text-xs text-center max-w-xs`}
+                        >
                           {dict?.monaGateInfo}
                         </span>
                       )}
