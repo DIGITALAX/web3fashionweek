@@ -155,6 +155,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("emptytheatre");
     }
 
+    if (isVideoWatched(`runwayo_${lang}`)) {
+      tasks.push("runwayo");
+    }
+
     setCompletedTasks(tasks);
   }, [
     lang,

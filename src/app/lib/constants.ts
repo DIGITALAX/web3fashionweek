@@ -122,10 +122,9 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "runwayo",
     component: "RunwayO",
     title: "RUNWAY O",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    image: "QmQ4Nqdo4HLTcnXs5aoFR42HZWHycjiaHVHgkrkh8pUP5B",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "dressingroom",
@@ -283,6 +282,17 @@ export const CINE_VIDEOS: Record<Language, string> = {
   ar: "QmUDAYGQJcWshCkjYvstMGzAP7J69JUvzPFH89aG2BiD5j",
   fa: "QmUbhcLrXkEU1Z1Di1PZVkMCgE93xot5EgpC5JQ6fAhVGQ",
 };
+export const RUNWAYO_VIDEOS: Record<Language, string> = {
+  en: "QmXk2EsRoJz8MKzwmTvgAcb4dC8VvMkjNE4VTXxQYxjvx8",
+  es: "QmXk2EsRoJz8MKzwmTvgAcb4dC8VvMkjNE4VTXxQYxjvx8",
+  pt: "QmXk2EsRoJz8MKzwmTvgAcb4dC8VvMkjNE4VTXxQYxjvx8",
+  ar: "QmXk2EsRoJz8MKzwmTvgAcb4dC8VvMkjNE4VTXxQYxjvx8",
+  fa: "QmXk2EsRoJz8MKzwmTvgAcb4dC8VvMkjNE4VTXxQYxjvx8",
+};
+
+
+
+
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
 export const GENESIS_NFT: `0x${string}` =

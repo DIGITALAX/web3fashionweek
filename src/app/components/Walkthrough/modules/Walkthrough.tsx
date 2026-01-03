@@ -22,6 +22,7 @@ import Tunnel58 from "./Tunnel58";
 import PatternLibrary from "./PatternLibrary";
 import Cine from "./Cine";
 import EmptyTheatre from "./EmptyTheatre";
+import RunwayO from "./RunwayO";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -172,6 +173,14 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             lang={lang}
             onComplete={() => handleTaskComplete("emptytheatre")}
             hasCompleted={hasCompletedEmptyTheatre}
+          />
+        );
+      case "RunwayO":
+        return (
+          <RunwayO
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("runwayo")}
           />
         );
       default:
