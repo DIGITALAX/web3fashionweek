@@ -130,10 +130,9 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "dressingroom",
     component: "DressingRoom",
     title: "dressingroom",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    image: "QmVk9Czgnhbda45DyjJehT64zfUpZMpqPBoSBuEQpLMQgj",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "runwaym",
@@ -290,14 +289,12 @@ export const RUNWAYO_VIDEOS: Record<Language, string> = {
   fa: "QmXk2EsRoJz8MKzwmTvgAcb4dC8VvMkjNE4VTXxQYxjvx8",
 };
 
-
-
-
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
 export const GENESIS_NFT: `0x${string}` =
   "0xE69dAB02100d3989bCA736a0FE1239CbFcf2cE01";
-
+export const IONIC_NFT: `0x${string}` =
+  "0x160694488154F67c70208cBA1fa3dDb8B7FF8738";
 export const CAKE_NFTS: { id: number; image: string; animation: string }[] = [
   {
     id: 1,
@@ -410,3 +407,12 @@ export const CINE_NFTS: { id: number; image: string; animation: string }[] = [
     animation: "Qme8SDLHc8s7xGZosxvBXSjHT9tdnHZgV5gRdd8vk7XHKU",
   },
 ];
+
+export const DRESSING_NFTS: { id: number; image: string; animation: string }[] =
+  [
+    {
+      id: 1,
+      image: "Qma4f5M3zRZooESswHdiGVTMTxgWSsQV9e7evRfL1VQKPn",
+      animation: "QmWyFrMCFMEc7D3aEQHwNzD42eVd7Jf7mHhWwtoHthNxJw",
+    },
+  ];

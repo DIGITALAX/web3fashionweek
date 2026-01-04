@@ -5,6 +5,7 @@ import { useAccount, usePublicClient, useReadContract } from "wagmi";
 import {
   GENESIS_NFT,
   MONA_TOKEN,
+  IONIC_NFT,
   QUEST_CONTRACT,
   getLangId,
 } from "@/app/lib/constants";
@@ -48,6 +49,16 @@ export const useCompleteStep = (
     },
   });
 
+  const { data: ionicBalance } = useReadContract({
+    address: IONIC_NFT,
+    abi: erc721Abi,
+    functionName: "balanceOf",
+    args: address ? [address] : undefined,
+    query: {
+      enabled: !!address && isConnected,
+    },
+  });
+
   const { data: stepGates } = useReadContract({
     address: QUEST_CONTRACT,
     abi: W3FWQuestABI,
@@ -74,6 +85,17 @@ export const useCompleteStep = (
     );
     if (!genesisGate) return true;
     return genesisBalance >= genesisGate.requiredAmount;
+  })();
+
+  const hasEnoughIonic = (() => {
+    if (!ionicBalance || !stepGates || !Array.isArray(stepGates))
+      return false;
+    const ionicGate = stepGates.find(
+      (gate: { token: string; requiredAmount: bigint }) =>
+        gate.token.toLowerCase() === IONIC_NFT.toLowerCase()
+    );
+    if (!ionicGate) return true;
+    return ionicBalance >= ionicGate.requiredAmount;
   })();
 
   const { data: stepData } = useReadContract({
@@ -148,6 +170,7 @@ export const useCompleteStep = (
     isReady: !!publicClient,
     hasEnoughMona,
     hasEnoughGenesis,
+    hasEnoughIonic,
   };
 };
 

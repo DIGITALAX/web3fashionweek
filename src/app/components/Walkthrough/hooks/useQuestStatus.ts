@@ -96,6 +96,18 @@ export const useQuestStatus = (lang: Language) => {
       account: address,
     });
 
+  const { data: hasCompletedDressingRoom, refetch: refetchDressingRoom } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(8), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
+
   useEffect(() => {
     const tasks: string[] = [];
 
@@ -159,6 +171,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("runwayo");
     }
 
+    if (hasCompletedDressingRoom) {
+      tasks.push("dressingroom");
+    }
+
     setCompletedTasks(tasks);
   }, [
     lang,
@@ -169,6 +185,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedTunnel58,
     hasCompletedPatternLibrary,
     hasCompletedEmptyTheatre,
+    hasCompletedDressingRoom,
   ]);
 
   const markTaskComplete = (taskId: string) => {
@@ -185,6 +202,7 @@ export const useQuestStatus = (lang: Language) => {
     refetchTunnel58();
     refetchPatternLibrary();
     refetchEmptyTheatre();
+    refetchDressingRoom();
   };
 
   return {
@@ -198,6 +216,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedTunnel58: hasCompletedTunnel58 as boolean,
     hasCompletedPatternLibrary: hasCompletedPatternLibrary as boolean,
     hasCompletedEmptyTheatre: hasCompletedEmptyTheatre as boolean,
+    hasCompletedDressingRoom: hasCompletedDressingRoom as boolean,
   };
 };
 
