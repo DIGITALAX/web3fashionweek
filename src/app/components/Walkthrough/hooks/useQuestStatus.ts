@@ -175,6 +175,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("dressingroom");
     }
 
+    if (isVideoWatched(`runwaym_${lang}`)) {
+      tasks.push("runwaym");
+    }
+
     setCompletedTasks(tasks);
   }, [
     lang,

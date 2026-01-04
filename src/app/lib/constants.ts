@@ -138,10 +138,9 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "runwaym",
     component: "RunwayM",
     title: "RUNWAY M",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    image: "QmekeUJsGcTXB2drrsmEKBzRkAQ7acv6s2DPYYFxiU7Jqp",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "ifyoubuildit",
@@ -288,6 +287,13 @@ export const RUNWAYO_VIDEOS: Record<Language, string> = {
   ar: "QmXk2EsRoJz8MKzwmTvgAcb4dC8VvMkjNE4VTXxQYxjvx8",
   fa: "QmXk2EsRoJz8MKzwmTvgAcb4dC8VvMkjNE4VTXxQYxjvx8",
 };
+export const RUNWAYM_VIDEOS: Record<Language, string> = {
+  en: "Qmc2Ma2MmK2wAfMjsEdFTRo1Wdax81XTRaVujesq3Y9Sct",
+  es: "QmRJJNMW1xn1iy5DG3xvCZE95qNYA8wPP4HjQVAU2RS1Ue",
+  pt: "QmXGNupjoR5HSzTGsnrscvhUYXwdcJuHmkjCSMNYZNBP6M",
+  ar: "QmWj1x6TDUjiEtHstLZP77s3d35emVjNvnZWiEiR83KTnY",
+  fa: "QmQxgPDze55DUDTqPz9a7jd5XEGHKyFuJDW5bcQjQwnxFL",
+};   
 
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";

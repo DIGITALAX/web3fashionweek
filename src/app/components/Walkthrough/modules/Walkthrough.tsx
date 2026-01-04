@@ -24,6 +24,7 @@ import Cine from "./Cine";
 import EmptyTheatre from "./EmptyTheatre";
 import RunwayO from "./RunwayO";
 import DressingRoom from "./DressingRoom";
+import RunwayM from "./RunwayM";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -192,6 +193,14 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             lang={lang}
             onComplete={() => handleTaskComplete("dressingroom")}
             hasCompleted={hasCompletedDressingRoom}
+          />
+        );
+      case "RunwayM":
+        return (
+          <RunwayM
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("runwaym")}
           />
         );
       default:
