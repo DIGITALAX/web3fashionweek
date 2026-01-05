@@ -31,8 +31,10 @@ const ShopTheLooks = ({
   );
 
   const marketUrl =
-    lang === "es" || lang === "pt"
+    lang === "es"
       ? "https://globaldesignernetwork.com/es/market/"
+      : lang === "pt"
+      ? "https://globaldesignernetwork.com/pt/market/"
       : "https://globaldesignernetwork.com/market/";
 
   return (

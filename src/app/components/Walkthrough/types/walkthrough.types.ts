@@ -118,8 +118,14 @@ export interface DarkGlassProps {
   hasCompleted?: boolean;
 }
 
-
 export interface Tunnel58Props {
+  dict: any;
+  lang: string;
+  onComplete?: () => void;
+  hasCompleted?: boolean;
+}
+
+export interface BuildItProps {
   dict: any;
   lang: string;
   onComplete?: () => void;

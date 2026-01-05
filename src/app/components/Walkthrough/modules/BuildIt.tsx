@@ -2,34 +2,44 @@
 
 import { ConnectKitButton } from "connectkit";
 import {
-  DarkGlassProps,
+  BuildItProps,
   Language,
 } from "@/app/components/Walkthrough/types/walkthrough.types";
 import {
   getFontCyn,
   getFontGrav,
   INFURA_GATEWAY,
-  DARKGLASS_NFTS,
+  CONSTRUYO_NFTS,
 } from "@/app/lib/constants";
 import useCompleteStep from "../hooks/useCompleteStep";
 
-const DarkGlass = ({
-  dict,
-  lang,
-  onComplete,
-  hasCompleted,
-}: DarkGlassProps) => {
+const BuildIt = ({ dict, lang, onComplete, hasCompleted }: BuildItProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
-  const { mint, isMinting, hasEnoughMona, hasEnoughGenesis, isReady } =
-    useCompleteStep(
-      lang as Language,
-      dict,
-      4,
-      onComplete,
-      "darkglassMintSuccess",
-      "darkglassMintError"
-    );
+  const {
+    mint,
+    isMinting,
+    hasEnoughMona,
+    hasEnoughGenesis,
+    hasEnoughIonic,
+    isReady,
+  } = useCompleteStep(
+    lang as Language,
+    dict,
+    9,
+    onComplete,
+    "mintSuccess",
+    "mintError"
+  );
+
+  const canMint = hasEnoughMona || hasEnoughGenesis || hasEnoughIonic;
+
+  const marketUrl =
+    lang === "es"
+      ? "https://globaldesignernetwork.com/es/market/"
+      : lang === "pt"
+      ? "https://globaldesignernetwork.com/pt/market/"
+      : "https://globaldesignernetwork.com/market/";
 
   return (
     <div className="relative flex flex-col w-full h-full items-center justify-start overflow-y-scroll bg-black/30">
@@ -37,54 +47,29 @@ const DarkGlass = ({
         <div className="relative flex flex-col w-full max-w-4xl items-center gap-6">
           <div className="relative flex flex-col w-full items-center gap-2">
             <span className={`${fontGrav} text-blanco text-2xl text-center`}>
-              {dict?.darkglass}
+              {dict?.ifyoubuildit}
             </span>
             <span
               className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}
             >
-              {dict?.darkglassDescription}{" "}
+              {dict?.buildItDescription}{" "}
               <a
-                href={
-                  lang === "es"
-                    ? "https://globaldesignernetwork.com/es/market/"
-                    : lang === "pt"
-                    ? "https://globaldesignernetwork.com/pt/market/"
-                    : "https://globaldesignernetwork.com/market/"
-                }
+                href={marketUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-blanco transition-colors"
               >
-                {dict?.darkglassMarketLink}
+                {dict?.buildItMarketLink}
               </a>
+              {dict?.buildItDescriptionEnd}
             </span>
           </div>
-          <div className="relative flex flex-col w-full items-center gap-3">
-            <div className="relative flex flex-row w-full items-center justify-center gap-3">
-              {DARKGLASS_NFTS.slice(0, 2).map((nft) => (
-                <div
-                  key={nft.id}
-                  className="relative flex w-36 h-24 sm:w-52 sm:h-36 border border-blanco/30"
-                >
-                  <video
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                    draggable={false}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    poster={`${INFURA_GATEWAY}/ipfs/${nft.image}`}
-                  >
-                    <source
-                      src={`${INFURA_GATEWAY}/ipfs/${nft.animation}`}
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-              ))}
-            </div>
-            <div className="relative flex flex-row w-full items-center justify-center">
-              <div className="relative flex w-36 h-24 sm:w-52 sm:h-36 border border-blanco/30">
+          <div className="relative flex flex-row flex-wrap w-full items-center justify-center gap-3">
+            {CONSTRUYO_NFTS.map((nft) => (
+              <div
+                key={nft.id}
+                className="relative flex w-48 h-36 sm:w-60 sm:h-44 border border-blanco/30"
+              >
                 <video
                   muted
                   loop
@@ -92,15 +77,15 @@ const DarkGlass = ({
                   playsInline
                   draggable={false}
                   className="absolute inset-0 w-full h-full object-cover"
-                  poster={`${INFURA_GATEWAY}/ipfs/${DARKGLASS_NFTS[2].image}`}
+                  poster={`${INFURA_GATEWAY}/ipfs/${nft.image}`}
                 >
                   <source
-                    src={`${INFURA_GATEWAY}/ipfs/${DARKGLASS_NFTS[2].animation}`}
+                    src={`${INFURA_GATEWAY}/ipfs/${nft.animation}`}
                     type="video/mp4"
                   />
                 </video>
               </div>
-            </div>
+            ))}
           </div>
           {hasCompleted && (
             <div className="relative flex w-full items-center justify-center">
@@ -139,23 +124,22 @@ const DarkGlass = ({
                         disabled={isMinting || !isReady}
                         className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco text-blanco text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
                       >
-                        {isMinting && (hasEnoughMona || hasEnoughGenesis)
-                          ? dict?.minting
-                          : !isMinting && (hasEnoughMona || hasEnoughGenesis)
+                        {canMint && !isMinting
                           ? dict?.mint
-                          : isMinting
-                          ? dict?.completing
-                          : dict?.completeStep}
+                          : canMint && isMinting
+                          ? dict?.minting
+                          : !canMint && !isMinting
+                          ? dict?.completeStep
+                          : dict?.completing}
                       </button>
 
-                      {!hasEnoughMona ||
-                        (hasEnoughGenesis && (
-                          <span
-                            className={`${fontCyn} text-blanco/50 text-xs text-center max-w-xs`}
-                          >
-                            {dict?.darkglassGateInfo}
-                          </span>
-                        ))}
+                      {!canMint && (
+                        <span
+                          className={`${fontCyn} text-blanco/50 text-xs text-center max-w-xs`}
+                        >
+                          {dict?.buildItGateInfo}
+                        </span>
+                      )}
                     </div>
                   );
                 }}
@@ -168,4 +152,4 @@ const DarkGlass = ({
   );
 };
 
-export default DarkGlass;
+export default BuildIt;

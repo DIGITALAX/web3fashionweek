@@ -146,10 +146,9 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "ifyoubuildit",
     component: "IfYouBuildIt",
     title: "ifyoubuildit",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    image: "QmaSKZwDgmUJcQqtiCondzRq1c9pww9N6eWYYifK3PJ1Mt",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "runwayp",
@@ -293,7 +292,7 @@ export const RUNWAYM_VIDEOS: Record<Language, string> = {
   pt: "QmXGNupjoR5HSzTGsnrscvhUYXwdcJuHmkjCSMNYZNBP6M",
   ar: "QmWj1x6TDUjiEtHstLZP77s3d35emVjNvnZWiEiR83KTnY",
   fa: "QmQxgPDze55DUDTqPz9a7jd5XEGHKyFuJDW5bcQjQwnxFL",
-};   
+};
 
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
@@ -422,3 +421,26 @@ export const DRESSING_NFTS: { id: number; image: string; animation: string }[] =
       animation: "QmWyFrMCFMEc7D3aEQHwNzD42eVd7Jf7mHhWwtoHthNxJw",
     },
   ];
+
+export const CONSTRUYO_NFTS: {
+  id: number;
+  image: string;
+  animation: string;
+}[] = [
+  {
+    id: 1,
+    image: "QmZTeyHWU9azNCsoHo14oUwk6iz8PeaAfVH3RKBuWE3C6y",
+    animation: "QmVAKypgC1Wgxsoe1Tq2h3jvhgiPzXLqqq8UB5wYU6KDnW",
+  },
+  {
+    id: 2,
+    image: "QmYUh4xWByCBbQgSwfs9t4pi5gQ4KgArRCS4WdkSeRXjx9",
+    animation: "QmNk9R4VnQWoZdXSneXgfPduf5LmFT9kwsaqm58GgHDupH",
+  },
+  {
+    id: 3,
+    image: "QmS4FmhQi1Bz4HfHp59BSiUP27HSc4rr3VpqnXfiELkjis",
+    animation: "QmVqpVchL5UDYD1cGHFVm6w5pAwJgYrNnfgXrQrucRrPwJ",
+  },
+ 
+];

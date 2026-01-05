@@ -108,6 +108,18 @@ export const useQuestStatus = (lang: Language) => {
       account: address,
     });
 
+  const { data: hasCompletedBuildIt, refetch: refetchBuildIt } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(9), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
+
   useEffect(() => {
     const tasks: string[] = [];
 
@@ -179,6 +191,10 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("runwaym");
     }
 
+    if (hasCompletedBuildIt) {
+      tasks.push("ifyoubuildit");
+    }
+
     setCompletedTasks(tasks);
   }, [
     lang,
@@ -190,6 +206,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedPatternLibrary,
     hasCompletedEmptyTheatre,
     hasCompletedDressingRoom,
+    hasCompletedBuildIt,
   ]);
 
   const markTaskComplete = (taskId: string) => {
@@ -207,6 +224,7 @@ export const useQuestStatus = (lang: Language) => {
     refetchPatternLibrary();
     refetchEmptyTheatre();
     refetchDressingRoom();
+    refetchBuildIt();
   };
 
   return {
@@ -221,6 +239,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedPatternLibrary: hasCompletedPatternLibrary as boolean,
     hasCompletedEmptyTheatre: hasCompletedEmptyTheatre as boolean,
     hasCompletedDressingRoom: hasCompletedDressingRoom as boolean,
+    hasCompletedBuildIt: hasCompletedBuildIt as boolean,
   };
 };
 
