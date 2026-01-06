@@ -120,6 +120,18 @@ export const useQuestStatus = (lang: Language) => {
       account: address,
     });
 
+  const { data: hasCompletedEarntWatch, refetch: refetchEarntWatch } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(10), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
+
   useEffect(() => {
     const tasks: string[] = [];
 
@@ -195,6 +207,14 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("ifyoubuildit");
     }
 
+    if (isVideoWatched(`nightrun_${lang}`)) {
+      tasks.push("nightrun");
+    }
+
+    if (hasCompletedEarntWatch) {
+      tasks.push("earntwatch");
+    }
+
     setCompletedTasks(tasks);
   }, [
     lang,
@@ -207,6 +227,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedEmptyTheatre,
     hasCompletedDressingRoom,
     hasCompletedBuildIt,
+    hasCompletedEarntWatch,
   ]);
 
   const markTaskComplete = (taskId: string) => {
@@ -225,6 +246,7 @@ export const useQuestStatus = (lang: Language) => {
     refetchEmptyTheatre();
     refetchDressingRoom();
     refetchBuildIt();
+    refetchEarntWatch();
   };
 
   return {
@@ -240,6 +262,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedEmptyTheatre: hasCompletedEmptyTheatre as boolean,
     hasCompletedDressingRoom: hasCompletedDressingRoom as boolean,
     hasCompletedBuildIt: hasCompletedBuildIt as boolean,
+    hasCompletedEarntWatch: hasCompletedEarntWatch as boolean,
   };
 };
 

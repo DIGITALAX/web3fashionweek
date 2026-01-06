@@ -151,6 +151,22 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     hasTask: true,
   },
   {
+    id: "nightrun",
+    component: "NightRun",
+    title: "Night Run",
+    image: "QmNigbbvkUKtBdj75pg6xAUwVkJrAQGeYYkfSZRxbHo4pW",
+    locked: true,
+    hasTask: true,
+  },
+  {
+    id: "earntwatch",
+    component: "EarntWatch",
+    title: "Earnt Watch",
+    image: "QmRhxJe7A6dhJK3aYxTtka6AoyRjcq6aXuwFhvsZzdktsd",
+    locked: true,
+    hasTask: true,
+  },
+  {
     id: "runwayp",
     component: "RunwayP",
     title: "RUNWAY P",
@@ -292,6 +308,13 @@ export const RUNWAYM_VIDEOS: Record<Language, string> = {
   pt: "QmXGNupjoR5HSzTGsnrscvhUYXwdcJuHmkjCSMNYZNBP6M",
   ar: "QmWj1x6TDUjiEtHstLZP77s3d35emVjNvnZWiEiR83KTnY",
   fa: "QmQxgPDze55DUDTqPz9a7jd5XEGHKyFuJDW5bcQjQwnxFL",
+};
+export const NIGHTRUN_VIDEOS: Record<Language, string> = {
+  en: "QmUrGhxAPXBWj1y7EZYBFQkf8NWsrjGVmLF8JodnUXNWGp",
+  es: "QmXaaVCNvAE9WZnS4HGYdFBn2GBhN2vNSrZQPc5ZfhfV1M",
+  pt: "QmbrwzZvZWscpNu6Rd1r4exj9SVx5CjYUxkk81HDYxHPPb",
+  ar: "QmUgorEhhQHXS2TUwCcAJJNY5MtsTMRczyAqj85BfQGDAa",
+  fa: "QmPovSMTsoesTHCWWJjvoEettHokR7SdPqbWcvGgD4Hdze",
 };
 
 export const MONA_TOKEN: `0x${string}` =
@@ -442,5 +465,13 @@ export const CONSTRUYO_NFTS: {
     image: "QmS4FmhQi1Bz4HfHp59BSiUP27HSc4rr3VpqnXfiELkjis",
     animation: "QmVqpVchL5UDYD1cGHFVm6w5pAwJgYrNnfgXrQrucRrPwJ",
   },
- 
 ];
+
+export const NIGHTRUN_NFTS: { id: number; image: string; animation: string }[] =
+  [
+    {
+      id: 1,
+      image: "Qmd87b5feE11Rozah6GV8kGaNiMgFQ2Ehq5Hi4e3aP4HfV",
+      animation: "QmXaAXrB39HHm3WDHR57zkznZpJitrhFtnszE1EtEbWYd1",
+    },
+  ];

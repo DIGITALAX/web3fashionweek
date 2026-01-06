@@ -26,6 +26,8 @@ import RunwayO from "./RunwayO";
 import DressingRoom from "./DressingRoom";
 import RunwayM from "./RunwayM";
 import BuildIt from "./BuildIt";
+import NightRun from "./NightRun";
+import EarntWatch from "./EarntWatch";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -42,6 +44,7 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
     hasCompletedEmptyTheatre,
     hasCompletedDressingRoom,
     hasCompletedBuildIt,
+    hasCompletedEarntWatch,
   } = useQuestStatus(lang as Language);
 
   const handleNavigate = (index: number) => {
@@ -212,6 +215,23 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             lang={lang}
             onComplete={() => handleTaskComplete("ifyoubuildit")}
             hasCompleted={hasCompletedBuildIt}
+          />
+        );
+      case "NightRun":
+        return (
+          <NightRun
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("nightrun")}
+          />
+        );
+      case "EarntWatch":
+        return (
+          <EarntWatch
+            dict={dict}
+            lang={lang}
+            onComplete={() => handleTaskComplete("earntwatch")}
+            hasCompleted={hasCompletedEarntWatch}
           />
         );
       default:
