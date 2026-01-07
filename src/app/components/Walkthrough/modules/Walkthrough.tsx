@@ -28,6 +28,10 @@ import RunwayM from "./RunwayM";
 import BuildIt from "./BuildIt";
 import NightRun from "./NightRun";
 import EarntWatch from "./EarntWatch";
+import LookingGlass from "./LookingGlass";
+import LightsOut from "./LightsOut";
+import RunwayP from "./RunwayP";
+import ModelSeesYou from "./ModelSeesYou";
 
 const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -45,6 +49,9 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
     hasCompletedDressingRoom,
     hasCompletedBuildIt,
     hasCompletedEarntWatch,
+    hasCompletedLightsOut,
+    hasCompletedDIY,
+    hasCompletedModelSees,
   } = useQuestStatus(lang as Language);
 
   const handleNavigate = (index: number) => {
@@ -80,7 +87,15 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
           />
         );
       case "Goods":
-        return <Goods dict={dict} lang={lang} />;
+        return (
+          <Goods
+            dict={dict}
+            lang={lang}
+            hasCompletedLightsOut={hasCompletedLightsOut}
+            hasCompleted={hasCompletedDIY}
+            onComplete={() => handleTaskComplete("diy")}
+          />
+        );
       case "RunwayD":
         return (
           <RunwayD
@@ -232,6 +247,40 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             lang={lang}
             onComplete={() => handleTaskComplete("earntwatch")}
             hasCompleted={hasCompletedEarntWatch}
+          />
+        );
+      case "RunwayP":
+        return (
+          <RunwayP
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("runwayp")}
+          />
+        );
+      case "ModelSeesYou":
+        return (
+          <ModelSeesYou
+            dict={dict}
+            lang={lang}
+            onComplete={() => handleTaskComplete("modelseesyou")}
+            hasCompleted={hasCompletedModelSees}
+          />
+        );
+      case "LookingGlass":
+        return (
+          <LookingGlass
+            dict={dict}
+            lang={lang}
+            onVideoComplete={() => handleTaskComplete("lookingglass")}
+          />
+        );
+      case "LightsOut":
+        return (
+          <LightsOut
+            dict={dict}
+            lang={lang}
+            onComplete={() => handleTaskComplete("lightsout")}
+            hasCompleted={hasCompletedLightsOut}
           />
         );
       default:

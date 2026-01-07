@@ -131,6 +131,39 @@ export const useQuestStatus = (lang: Language) => {
       },
       account: address,
     });
+  const { data: hasCompletedModelSees, refetch: refetchModelSees } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(11), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
+  const { data: hasCompletedLightsOut, refetch: refetchLightsOut } =
+    useReadContract({
+      address: QUEST_CONTRACT,
+      abi: W3FWQuestABI,
+      functionName: "hasCompletedStep",
+      args: [BigInt(12), address, langId],
+      query: {
+        enabled: !!address && isConnected,
+      },
+      account: address,
+    });
+
+  const { data: hasCompletedDIY, refetch: refetchDIY } = useReadContract({
+    address: QUEST_CONTRACT,
+    abi: W3FWQuestABI,
+    functionName: "hasCompletedStep",
+    args: [BigInt(13), address, langId],
+    query: {
+      enabled: !!address && isConnected,
+    },
+    account: address,
+  });
 
   useEffect(() => {
     const tasks: string[] = [];
@@ -215,6 +248,26 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("earntwatch");
     }
 
+    if (isVideoWatched(`runwayp_${lang}`)) {
+      tasks.push("runwayp");
+    }
+
+    if (hasCompletedModelSees) {
+      tasks.push("modelseesyou");
+    }
+
+    if (isVideoWatched(`lookingglass_${lang}`)) {
+      tasks.push("lookingglass");
+    }
+
+    if (hasCompletedLightsOut) {
+      tasks.push("lightsout");
+    }
+
+    if (hasCompletedDIY) {
+      tasks.push("diy");
+    }
+
     setCompletedTasks(tasks);
   }, [
     lang,
@@ -228,6 +281,9 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedDressingRoom,
     hasCompletedBuildIt,
     hasCompletedEarntWatch,
+    hasCompletedModelSees,
+    hasCompletedLightsOut,
+    hasCompletedDIY,
   ]);
 
   const markTaskComplete = (taskId: string) => {
@@ -247,6 +303,9 @@ export const useQuestStatus = (lang: Language) => {
     refetchDressingRoom();
     refetchBuildIt();
     refetchEarntWatch();
+    refetchModelSees();
+    refetchLightsOut();
+    refetchDIY();
   };
 
   return {
@@ -263,6 +322,9 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedDressingRoom: hasCompletedDressingRoom as boolean,
     hasCompletedBuildIt: hasCompletedBuildIt as boolean,
     hasCompletedEarntWatch: hasCompletedEarntWatch as boolean,
+    hasCompletedLightsOut: hasCompletedLightsOut as boolean,
+    hasCompletedDIY: hasCompletedDIY as boolean,
+    hasCompletedModelSees: hasCompletedModelSees as boolean,
   };
 };
 

@@ -1,5 +1,6 @@
 import {
   Language,
+  NFT,
   WalkthroughItem,
 } from "../components/Walkthrough/types/walkthrough.types";
 
@@ -145,7 +146,7 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
   {
     id: "ifyoubuildit",
     component: "IfYouBuildIt",
-    title: "ifyoubuildit",
+    title: "If You Build It",
     image: "QmaSKZwDgmUJcQqtiCondzRq1c9pww9N6eWYYifK3PJ1Mt",
     locked: true,
     hasTask: true,
@@ -170,28 +171,33 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     id: "runwayp",
     component: "RunwayP",
     title: "RUNWAY P",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    image: "QmWBS5UZExb4SJKhKxAKcBHJFYo49vnjAUCarjmEmmM4zN",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "modelseesyou",
     component: "ModelSeesYou",
-    title: "modelseesyou",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    title: "Model Sees You",
+    image: "QmQxjNdR8Uxs2nK9YwSkKfnivVijiJ8qzjkjTgDbZL8G71",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "lookingglass",
     component: "LookingGlass",
-    title: "lookingglass",
-    image: "QmUVtLvS66rf6BHKSRtBHcaBqpZ5wxCuWgkFhRAweppAfx",
-    locked: false,
-    hasTask: false,
-    comingSoon: true,
+    title: "Looking Glass",
+    image: "QmTcdjYfeXH9qX7t24tfMQpyyJHDSW4K8eBa2gHiU2cgr5",
+    locked: true,
+    hasTask: true,
+  },
+  {
+    id: "lightsout",
+    component: "LightsOut",
+    title: "lights Out",
+    image: "QmRQ9SZUa3psiG4jSynCt9kHgEYLe6fcEfic5AHWHui19F",
+    locked: true,
+    hasTask: true,
   },
   {
     id: "goods",
@@ -199,7 +205,7 @@ export const WALKTHROUGH_ITEMS: WalkthroughItem[] = [
     title: "GOODS",
     image: "QmYXGBgmyyppuMSuELokGuDaYdp7JpFBYxnnuzU8xB7YkV",
     locked: false,
-    hasTask: false,
+    hasTask: true,
   },
 ];
 
@@ -316,6 +322,20 @@ export const NIGHTRUN_VIDEOS: Record<Language, string> = {
   ar: "QmUgorEhhQHXS2TUwCcAJJNY5MtsTMRczyAqj85BfQGDAa",
   fa: "QmPovSMTsoesTHCWWJjvoEettHokR7SdPqbWcvGgD4Hdze",
 };
+export const RUNWAYP_VIDEOS: Record<Language, string> = {
+  en: "QmfHjf7LDGZEiXez656t3msc5CtSEV5Ym3o5K5XdiNNxRT",
+  es: "QmfHjf7LDGZEiXez656t3msc5CtSEV5Ym3o5K5XdiNNxRT",
+  pt: "QmfHjf7LDGZEiXez656t3msc5CtSEV5Ym3o5K5XdiNNxRT",
+  ar: "QmfHjf7LDGZEiXez656t3msc5CtSEV5Ym3o5K5XdiNNxRT",
+  fa: "QmfHjf7LDGZEiXez656t3msc5CtSEV5Ym3o5K5XdiNNxRT",
+};
+export const LOOKINGGLASS_VIDEOS: Record<Language, string> = {
+  en: "QmSeNdFMVoYfWRKjuG4DsDmhTUFaaw3tKKjCj9GjnsvEP4",
+  es: "QmPnKKMGrUeLT9QnwFTkx8tByFaW7wnth3Ai6XCT1RVyW4",
+  pt: "QmUjsEmjb34BP8JwkCRn1xKkZECHYZFZ3tPPycszpqvYdJ",
+  ar: "QmTjibiGYKvzgvHBCUt4h7rRmk6vDBicntXHvuphaN2CGy",
+  fa: "QmYSJAPLRFB5DpFWVK9JSDFUXwmoqPLbadiGCVDu9dXLAP",
+};
 
 export const MONA_TOKEN: `0x${string}` =
   "0x28547B5b6B405A1444A17694AC84aa2d6A03b3Bd";
@@ -323,7 +343,7 @@ export const GENESIS_NFT: `0x${string}` =
   "0xE69dAB02100d3989bCA736a0FE1239CbFcf2cE01";
 export const IONIC_NFT: `0x${string}` =
   "0x160694488154F67c70208cBA1fa3dDb8B7FF8738";
-export const CAKE_NFTS: { id: number; image: string; animation: string }[] = [
+export const CAKE_NFTS: NFT[] = [
   {
     id: 1,
     image: "QmYCP8G1C6LVuabZWHBoFTc8NdD8sMsmRrj5qSQhKiYBvd",
@@ -368,7 +388,7 @@ export const DARKGLASS_NFTS: {
   },
 ];
 
-export const SHOP_NFTS: { id: number; image: string; animation: string }[] = [
+export const SHOP_NFTS: NFT[] = [
   {
     id: 1,
     image: "QmSiS2TbetGejn9bdSys4SvXCuofPA4fduEmMwGFZGhEvE",
@@ -401,7 +421,7 @@ export const SHOP_NFTS: { id: number; image: string; animation: string }[] = [
   },
 ];
 
-export const TUNNEL_NFTS: { id: number; image: string; animation: string }[] = [
+export const TUNNEL_NFTS: NFT[] = [
   {
     id: 1,
     image: "Qmbz7iTbJJpU1QJ7n46p1CpHMaTQCTkSMzzfoFrLs2qkws",
@@ -409,26 +429,25 @@ export const TUNNEL_NFTS: { id: number; image: string; animation: string }[] = [
   },
 ];
 
-export const LIBRARY_NFTS: { id: number; image: string; animation: string }[] =
-  [
-    {
-      id: 1,
-      image: "QmbTHhdSjfsydwFXErt9FHegknWoXA1xPp8rcqT4PTJbCZ",
-      animation: "QmSUt5p1YJ4vBrf7QxGKEgUQacoYQ9zurnEgEjpXzYerJ1",
-    },
-    {
-      id: 2,
-      image: "QmTV3ehrkMNKaRJEmvUKU946mPoTQ8AiJkHQNkuCY7FKkW",
-      animation: "QmcPEQcwxykQM9vg5eAgRgNGP6i9CmChSpYmtERic3yham",
-    },
-    {
-      id: 3,
-      image: "QmVvq6VzcYSGeQZDWCfYZgv6USH6tPiAwFxZn5DZ85op1s",
-      animation: "QmULxCtHpaC81419n1pEzZuTAsA6EQB12SkLuAbLEvksts",
-    },
-  ];
+export const LIBRARY_NFTS: NFT[] = [
+  {
+    id: 1,
+    image: "QmbTHhdSjfsydwFXErt9FHegknWoXA1xPp8rcqT4PTJbCZ",
+    animation: "QmSUt5p1YJ4vBrf7QxGKEgUQacoYQ9zurnEgEjpXzYerJ1",
+  },
+  {
+    id: 2,
+    image: "QmTV3ehrkMNKaRJEmvUKU946mPoTQ8AiJkHQNkuCY7FKkW",
+    animation: "QmcPEQcwxykQM9vg5eAgRgNGP6i9CmChSpYmtERic3yham",
+  },
+  {
+    id: 3,
+    image: "QmVvq6VzcYSGeQZDWCfYZgv6USH6tPiAwFxZn5DZ85op1s",
+    animation: "QmULxCtHpaC81419n1pEzZuTAsA6EQB12SkLuAbLEvksts",
+  },
+];
 
-export const CINE_NFTS: { id: number; image: string; animation: string }[] = [
+export const CINE_NFTS: NFT[] = [
   {
     id: 1,
     image: "Qmchsq4BNzW9tzKvyfPDySmVbY2cKri3ZSMQGKM8U2tfep",
@@ -436,14 +455,13 @@ export const CINE_NFTS: { id: number; image: string; animation: string }[] = [
   },
 ];
 
-export const DRESSING_NFTS: { id: number; image: string; animation: string }[] =
-  [
-    {
-      id: 1,
-      image: "Qma4f5M3zRZooESswHdiGVTMTxgWSsQV9e7evRfL1VQKPn",
-      animation: "QmWyFrMCFMEc7D3aEQHwNzD42eVd7Jf7mHhWwtoHthNxJw",
-    },
-  ];
+export const DRESSING_NFTS: NFT[] = [
+  {
+    id: 1,
+    image: "Qma4f5M3zRZooESswHdiGVTMTxgWSsQV9e7evRfL1VQKPn",
+    animation: "QmWyFrMCFMEc7D3aEQHwNzD42eVd7Jf7mHhWwtoHthNxJw",
+  },
+];
 
 export const CONSTRUYO_NFTS: {
   id: number;
@@ -467,11 +485,46 @@ export const CONSTRUYO_NFTS: {
   },
 ];
 
-export const NIGHTRUN_NFTS: { id: number; image: string; animation: string }[] =
-  [
-    {
-      id: 1,
-      image: "Qmd87b5feE11Rozah6GV8kGaNiMgFQ2Ehq5Hi4e3aP4HfV",
-      animation: "QmXaAXrB39HHm3WDHR57zkznZpJitrhFtnszE1EtEbWYd1",
-    },
-  ];
+export const NIGHTRUN_NFTS: NFT[] = [
+  {
+    id: 1,
+    image: "Qmd87b5feE11Rozah6GV8kGaNiMgFQ2Ehq5Hi4e3aP4HfV",
+    animation: "QmXaAXrB39HHm3WDHR57zkznZpJitrhFtnszE1EtEbWYd1",
+  },
+];
+
+export const RUNWAYP_NFTS: NFT[] = [
+  {
+    id: 1,
+    image: "QmWFLaNeH9Xri5NPjYZA3t2pCMbkVVWQDnb7efR8JYJQJ2",
+    animation: "Qmdkk6foyspMirA15AayyJohbS69apCJA8WLrZAQs6fQPg",
+  },
+  {
+    id: 2,
+    image: "QmcbmS8VEhpLv8SZejusdF7namYxLjttE9ywhk5TbhUKES",
+    animation: "QmWfBnYya1Y1HY3qAB8zA5zWsAu3Dt23C8Wo22asWTYSKd",
+  },
+];
+
+export const LIGHTSOUT_NFTS: NFT[] = [
+  {
+    id: 1,
+    image: "QmVpM3M9MaA4jonRYoQVTcCScKAdFVmLBB255aksMGdJkU",
+    animation: "QmTdgyNrKgQjF5QDdBKw6tHqNMNY8a4BiGtVCVaM4GUMSf",
+  },
+];
+
+export const DIY_NFTS: (NFT & {
+  prompt: string;
+  lora: string;
+  workflow: string;
+})[] = [
+  {
+    id: 1,
+    image: "QmYVCNwhSZ9SgK9HmM5H4jkHP2nLxsV7H5XJ6GBeceqvMh",
+    animation: "Qme5pbasHBZnVzNZnXA5dgf7EhKdcqa516hYcRcsbDgohM",
+    prompt: "QmfJB3zHAnpTPJrVc2xWsQvPPXh9V161FRXy9jAM2f4bMU",
+    lora: "Qmbn6aWMXV7U13m3PpgLH6V7XuLnCC2NmT5ZKNGZuAMt4F",
+    workflow: "QmbSaC5HH2WnrBcU9arP8Bp3qkiWr4JsqMbaRfLjNNjcYL",
+  },
+];

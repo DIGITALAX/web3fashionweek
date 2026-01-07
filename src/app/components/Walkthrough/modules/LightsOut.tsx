@@ -9,11 +9,11 @@ import {
   getFontCyn,
   getFontGrav,
   INFURA_GATEWAY,
-  NIGHTRUN_NFTS,
+  LIGHTSOUT_NFTS,
 } from "@/app/lib/constants";
 import useCompleteStep from "../hooks/useCompleteStep";
 
-const EarntWatch = ({
+const LightsOut = ({
   dict,
   lang,
   onComplete,
@@ -24,7 +24,7 @@ const EarntWatch = ({
   const { mint, isMinting, isReady } = useCompleteStep(
     lang as Language,
     dict,
-    10,
+    12,
     onComplete,
     "shopMintSuccess",
     "shopMintError"
@@ -36,16 +36,16 @@ const EarntWatch = ({
         <div className="relative flex flex-col w-full max-w-4xl items-center gap-6">
           <div className="relative flex flex-col w-full items-center gap-2">
             <span className={`${fontGrav} text-blanco text-2xl text-center`}>
-              {dict?.earntwatch}
+              {dict?.lightsout}
             </span>
             <span
               className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg mt-2`}
             >
-              {dict?.earntwatchDescription}
+              {dict?.lightsoutDescription}
             </span>
           </div>
           <div className="relative flex flex-row flex-wrap w-full items-center justify-center gap-4">
-            {NIGHTRUN_NFTS.map((nft) => (
+            {LIGHTSOUT_NFTS.map((nft) => (
               <div
                 key={nft.id}
                 className="relative flex w-60 h-36 sm:w-80 sm:h-44 border border-blanco/30"
@@ -118,4 +118,4 @@ const EarntWatch = ({
   );
 };
 
-export default EarntWatch;
+export default LightsOut;

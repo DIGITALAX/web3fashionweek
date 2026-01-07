@@ -9,11 +9,11 @@ import {
   getFontCyn,
   getFontGrav,
   INFURA_GATEWAY,
-  NIGHTRUN_NFTS,
+  RUNWAYP_NFTS,
 } from "@/app/lib/constants";
 import useCompleteStep from "../hooks/useCompleteStep";
 
-const EarntWatch = ({
+const ModelSeesYou = ({
   dict,
   lang,
   onComplete,
@@ -21,14 +21,21 @@ const EarntWatch = ({
 }: ShopTheLooksProps) => {
   const fontCyn = getFontCyn(lang);
   const fontGrav = getFontGrav(lang);
-  const { mint, isMinting, isReady } = useCompleteStep(
+  const { mint, isMinting, hasEnoughMona, isReady } = useCompleteStep(
     lang as Language,
     dict,
-    10,
+    11,
     onComplete,
     "shopMintSuccess",
     "shopMintError"
   );
+
+  const marketUrl =
+    lang === "es"
+      ? "https://globaldesignernetwork.com/es/market/"
+      : lang === "pt"
+      ? "https://globaldesignernetwork.com/pt/market/"
+      : "https://globaldesignernetwork.com/market/";
 
   return (
     <div className="relative flex flex-col w-full h-full items-center justify-start overflow-y-scroll bg-black/30">
@@ -36,19 +43,19 @@ const EarntWatch = ({
         <div className="relative flex flex-col w-full max-w-4xl items-center gap-6">
           <div className="relative flex flex-col w-full items-center gap-2">
             <span className={`${fontGrav} text-blanco text-2xl text-center`}>
-              {dict?.earntwatch}
+              {dict?.modelseesyou}
             </span>
             <span
               className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg mt-2`}
             >
-              {dict?.earntwatchDescription}
+              {dict?.modelseesyouDescription}
             </span>
           </div>
           <div className="relative flex flex-row flex-wrap w-full items-center justify-center gap-4">
-            {NIGHTRUN_NFTS.map((nft) => (
+            {RUNWAYP_NFTS.map((nft) => (
               <div
                 key={nft.id}
-                className="relative flex w-60 h-36 sm:w-80 sm:h-44 border border-blanco/30"
+                className="relative flex w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] aspect-square border border-blanco/30"
               >
                 <video
                   muted
@@ -104,8 +111,22 @@ const EarntWatch = ({
                         disabled={isMinting || !isReady}
                         className={`${fontCyn} relative flex items-center justify-center px-8 py-3 bg-espacio border border-blanco text-blanco text-sm hover:bg-blanco/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
                       >
-                        {isMinting ? dict?.minting : dict?.mint}
+                        {hasEnoughMona && !isMinting
+                          ? dict?.mint
+                          : hasEnoughMona && isMinting
+                          ? dict?.minting
+                          : !hasEnoughMona && !isMinting
+                          ? dict?.completeStep
+                          : dict?.completing}
                       </button>
+
+                      {!hasEnoughMona && (
+                        <span
+                          className={`${fontCyn} text-blanco/50 text-xs text-center max-w-xs`}
+                        >
+                          {dict?.monaGateInfo}
+                        </span>
+                      )}
                     </div>
                   );
                 }}
@@ -118,4 +139,4 @@ const EarntWatch = ({
   );
 };
 
-export default EarntWatch;
+export default ModelSeesYou;

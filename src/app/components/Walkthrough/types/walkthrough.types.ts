@@ -81,6 +81,9 @@ export interface VideoStageProps {
 export interface GoodsProps {
   dict: any;
   lang: string;
+  hasCompletedLightsOut: boolean;
+  hasCompleted?: boolean;
+  onComplete?: () => void;
 }
 
 export interface WhiteRabbitProps {
@@ -149,4 +152,10 @@ export interface SuccessData {
 
 export interface ErrorData {
   message: string;
+}
+
+export interface NFT {
+  id: number;
+  image: string;
+  animation: string;
 }
