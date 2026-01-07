@@ -154,7 +154,7 @@ export const useQuestStatus = (lang: Language) => {
       account: address,
     });
 
-  const { data: hasCompletedDIY, refetch: refetchDIY } = useReadContract({
+  const { data: hasCompletedGoods, refetch: refetchGoods } = useReadContract({
     address: QUEST_CONTRACT,
     abi: W3FWQuestABI,
     functionName: "hasCompletedStep",
@@ -264,8 +264,8 @@ export const useQuestStatus = (lang: Language) => {
       tasks.push("lightsout");
     }
 
-    if (hasCompletedDIY) {
-      tasks.push("diy");
+    if (hasCompletedGoods) {
+      tasks.push("goods");
     }
 
     setCompletedTasks(tasks);
@@ -283,7 +283,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedEarntWatch,
     hasCompletedModelSees,
     hasCompletedLightsOut,
-    hasCompletedDIY,
+    hasCompletedGoods,
   ]);
 
   const markTaskComplete = (taskId: string) => {
@@ -305,7 +305,7 @@ export const useQuestStatus = (lang: Language) => {
     refetchEarntWatch();
     refetchModelSees();
     refetchLightsOut();
-    refetchDIY();
+    refetchGoods();
   };
 
   return {
@@ -323,7 +323,7 @@ export const useQuestStatus = (lang: Language) => {
     hasCompletedBuildIt: hasCompletedBuildIt as boolean,
     hasCompletedEarntWatch: hasCompletedEarntWatch as boolean,
     hasCompletedLightsOut: hasCompletedLightsOut as boolean,
-    hasCompletedDIY: hasCompletedDIY as boolean,
+    hasCompletedGoods: hasCompletedGoods as boolean,
     hasCompletedModelSees: hasCompletedModelSees as boolean,
   };
 };

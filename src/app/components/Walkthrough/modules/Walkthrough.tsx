@@ -50,7 +50,7 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
     hasCompletedBuildIt,
     hasCompletedEarntWatch,
     hasCompletedLightsOut,
-    hasCompletedDIY,
+    hasCompletedGoods,
     hasCompletedModelSees,
   } = useQuestStatus(lang as Language);
 
@@ -92,8 +92,8 @@ const Walkthrough = ({ dict, lang }: { dict: any; lang: string }) => {
             dict={dict}
             lang={lang}
             hasCompletedLightsOut={hasCompletedLightsOut}
-            hasCompleted={hasCompletedDIY}
-            onComplete={() => handleTaskComplete("diy")}
+            hasCompleted={hasCompletedGoods}
+            onComplete={() => handleTaskComplete("goods")}
           />
         );
       case "RunwayD":

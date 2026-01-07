@@ -46,9 +46,18 @@ const ModelSeesYou = ({
               {dict?.modelseesyou}
             </span>
             <span
-              className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg mt-2`}
+              className={`${fontCyn} text-blanco/70 text-sm text-center max-w-lg`}
             >
-              {dict?.modelseesyouDescription}
+              {dict?.modelseesyouDescription}{" "}
+              <a
+                href={marketUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-blanco transition-colors"
+              >
+                {dict?.modelMarketLink}
+              </a>
+              {dict?.modelDescriptionEnd}
             </span>
           </div>
           <div className="relative flex flex-row flex-wrap w-full items-center justify-center gap-4">
